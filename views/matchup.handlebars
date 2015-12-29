@@ -32,220 +32,220 @@
   {{/if }}
   {{!-- end: Article Block Partial --}}
 
-    {{!-- start: Edmunds Reviews Block Partial --}}
-    {{#with hero.edmunds_ratings }}
-      <section id="edmunds-ratings" class="row">
+  {{!-- start: Edmunds Reviews Block Partial --}}
+  {{#with hero.edmunds_ratings }}
+    <section id="edmunds-ratings" class="row">
 
-        <div class="col-md-8 col-md-offset-2">
-          <h2>Edmunds Ratings:</h2>
-          <hr>
-          <blockquote>
-            <p>
-              {{ summary }}
-            </p>
-            <footer><cite title="http://www.edmunds.com/new-car-ratings/">Edmunds.com</cite> new car rating summary.</footer>
-          </blockquote>
-        </div><!-- .col-md-8 -->
+      <div class="col-md-8 col-md-offset-2">
+        <h2>Edmunds Ratings:</h2>
+        <hr>
+        <blockquote>
+          <p>
+            {{ summary }}
+          </p>
+          <footer><cite title="http://www.edmunds.com/new-car-ratings/">Edmunds.com</cite> new car rating summary.</footer>
+        </blockquote>
+      </div><!-- .col-md-8 -->
 
-        <div class="col-md-8 col-md-offset-2">
-          {{#each ratings }}
-          <h3>{{ this.title }}</h3>
-            <table class="table table-hover table-striped">
-              <thead>
+      <div class="col-md-8 col-md-offset-2">
+        {{#each ratings }}
+        <h3>{{ this.title }}</h3>
+          <table class="table table-hover table-striped">
+            <thead>
+              <tr>
+                <th class="col-xs-4">&nbsp;</th>
+                <th class="col-xs-4 text-right">{{ ../../hero.detail.make.name }} {{ ../../hero.detail.model.name }}</th>
+                <th class="col-xs-4 text-right">{{ ../../villain.detail.make.name }} {{ ../../villain.detail.model.name }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each subRatings }}
                 <tr>
-                  <th class="col-xs-4">&nbsp;</th>
-                  <th class="col-xs-4 text-right">{{ ../../hero.detail.make.name }} {{ ../../hero.detail.model.name }}</th>
-                  <th class="col-xs-4 text-right">{{ ../../villain.detail.make.name }} {{ ../../villain.detail.model.name }}</th>
+                  <th>
+                    {{ title }}
+                  </th>
+                  <td class="text-right">
+                    {{ score }}
+                  </td>
+                  <td class="text-right">
+                    {{ @../index }}, {{ @index }}
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {{#each subRatings }}
-                  <tr>
-                    <th>
-                      {{ title }}
-                    </th>
-                    <td class="text-right">
-                      {{ score }}
-                    </td>
-                    <td class="text-right">
-                      {{ @../index }}, {{ @index }}
-                    </td>
-                  </tr>
-                {{/each }}
-              </tbody>
-            </table>
-          {{/each }}
-        </div><!-- .col-md-8 -->
+              {{/each }}
+            </tbody>
+          </table>
+        {{/each }}
+      </div><!-- .col-md-8 -->
 
-      </section>
-    {{/with }}
-    {{!--   end: Edmunds Reviews Detail Block Partial --}}
+    </section>
+  {{/with }}
+  {{!--   end: Edmunds Reviews Detail Block Partial --}}
 
-    {{!-- start: Consumer Reviews Block Partial --}}
-      <section class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h2>Consumer Reviews:</h2>
-          <hr>
-        </div><!-- .col-md-8 -->
-
-        {{#with hero.reviews }}
-          <div class="col-md-8 col-md-offset-2">
-            <h3 class="text-center">{{ ../hero.detail.make.name }} {{ ../hero.detail.model.name }}</h3>
-            {{#each reviews }}
-              {{#if this.include }}
-                <div class="row">
-                  <div class="col-xs-12">
-                    
-                    ({{ this.userRating }}-star)
-                    <i class="glyphicon glyphicon-star"></i>
-                    <i class="glyphicon glyphicon-star"></i>
-                    <i class="glyphicon glyphicon-star"></i>
-                    <i class="glyphicon glyphicon-star"></i>
-                    <i class="glyphicon glyphicon-star"></i>
-
-                    <h4> {{ this.title }}</h4>
-                    <h4><small>Written by {{ this.author.authorName }} on {{ this.created }}</small></h4>
-                    <p>
-                      {{ this.text }}
-                    </p>
-                    <table class="table table-striped table-condensed">
-                      <tbody>
-                        <tr>
-                          <td class="col-xs-3">
-                            <strong>Performance</strong>
-                          </td>
-                          <td class="col-xs-2 text-right">
-                            {{ this.performanceRatingDto.performanceRating }}
-                          </td>
-                          <td class="col-xs-3">
-                            <strong>Comfort</strong>
-                          </td>
-                          <td class="col-xs-2 text-right">
-                            {{ this.comfortRatingDto.comfortRating }}
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="col-xs-3">
-                            <strong>Interior</strong>
-                          </td>
-                          <td class="col-xs-2 text-right">
-                            {{ this.interiorRatingDto.interiorRating }}
-                          </td>
-                          <td class="col-xs-3">
-                            <strong>Technology</strong>
-                          </td>
-                          <td class="col-xs-2 text-right">
-                            {{ this.technologyRatingDto.technologyRating }}
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="col-xs-3">
-                            <strong>Safety</strong>
-                          </td>
-                          <td class="col-xs-2 text-right">
-                            {{ this.safetyRatingDto.safetyRating }}
-                          </td>
-                          <td class="col-xs-3">
-                            <strong>Value</strong>
-                          </td>
-                          <td class="col-xs-2 text-right">
-                            {{ this.valueRatingDto.valueRating }}
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-
-                  </div><!-- .row -->
-                </div><!-- .row -->
-              {{/if }}
-            {{/each }}
-          </div><!-- .col-md-8 (hero reviews) -->
-        {{/with }}
-
-        {{#with villain.reviews }}
-          <div class="col-md-8 col-md-offset-2">
-            <h3 class="text-center">{{ ../villain.detail.make.name }} {{ ../villain.detail.model.name }}</h3>
-            {{#each reviews }}
-              {{#if this.include }}
-                <div class="row">
-                  <div class="col-xs-12">
-
-                    ({{ this.userRating }}-star)
-                    <i class="glyphicon glyphicon-star"></i>
-                    <i class="glyphicon glyphicon-star"></i>
-                    <i class="glyphicon glyphicon-star"></i>
-                    <i class="glyphicon glyphicon-star"></i>
-                    <i class="glyphicon glyphicon-star"></i>
-
-                    <h4> {{ this.title }}</h4>
-                    <h4><small>Written by {{ this.author.authorName }} on {{ this.created }}</small></h4>
-                    <p>
-                      {{ this.text }}
-                    </p>
-                    <table class="table table-striped table-condensed">
-                      <tbody>
-                        <tr>
-                          <td class="col-xs-3">
-                            <strong>Performance</strong>
-                          </td>
-                          <td class="col-xs-2 text-right">
-                            {{ this.performanceRatingDto.performanceRating }}
-                          </td>
-                          <td class="col-xs-3">
-                            <strong>Comfort</strong>
-                          </td>
-                          <td class="col-xs-2 text-right">
-                            {{ this.comfortRatingDto.comfortRating }}
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="col-xs-3">
-                            <strong>Interior</strong>
-                          </td>
-                          <td class="col-xs-2 text-right">
-                            {{ this.interiorRatingDto.interiorRating }}
-                          </td>
-                          <td class="col-xs-3">
-                            <strong>Technology</strong>
-                          </td>
-                          <td class="col-xs-2 text-right">
-                            {{ this.technologyRatingDto.technologyRating }}
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="col-xs-3">
-                            <strong>Safety</strong>
-                          </td>
-                          <td class="col-xs-2 text-right">
-                            {{ this.safetyRatingDto.safetyRating }}
-                          </td>
-                          <td class="col-xs-3">
-                            <strong>Value</strong>
-                          </td>
-                          <td class="col-xs-2 text-right">
-                            {{ this.valueRatingDto.valueRating }}
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-
-                  </div><!-- .row -->
-                </div><!-- .row -->
-              {{/if }}
-            {{/each }}
-          </div><!-- .col-md-8 (villain reviews) -->
-        {{/with }}
-
-      </section>
-    {{!--   end: Consumer Reviews Block Partial --}}
-
-    {{!-- start: Detail Block Partial --}}
+  {{!-- start: Consumer Reviews Block Partial --}}
     <section class="row">
       <div class="col-md-8 col-md-offset-2">
-        <h2>Detail Table:</h2>
+        <h2>Consumer Reviews:</h2>
         <hr>
       </div><!-- .col-md-8 -->
+
+      {{#with hero.reviews }}
+        <div class="col-md-8 col-md-offset-2">
+          <h3 class="text-center">{{ ../hero.detail.make.name }} {{ ../hero.detail.model.name }}</h3>
+          {{#each reviews }}
+            {{#if this.include }}
+              <div class="row">
+                <div class="col-xs-12">
+
+                  ({{ this.userRating }}-star)
+                  <i class="glyphicon glyphicon-star"></i>
+                  <i class="glyphicon glyphicon-star"></i>
+                  <i class="glyphicon glyphicon-star"></i>
+                  <i class="glyphicon glyphicon-star"></i>
+                  <i class="glyphicon glyphicon-star"></i>
+
+                  <h4> {{ this.title }}</h4>
+                  <h4><small>Written by {{ this.author.authorName }} on {{ this.created }}</small></h4>
+                  <p>
+                    {{ this.text }}
+                  </p>
+                  <table class="table table-striped table-condensed">
+                    <tbody>
+                      <tr>
+                        <td class="col-xs-3">
+                          <strong>Performance</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.performanceRatingDto.performanceRating }}
+                        </td>
+                        <td class="col-xs-3">
+                          <strong>Comfort</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.comfortRatingDto.comfortRating }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="col-xs-3">
+                          <strong>Interior</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.interiorRatingDto.interiorRating }}
+                        </td>
+                        <td class="col-xs-3">
+                          <strong>Technology</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.technologyRatingDto.technologyRating }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="col-xs-3">
+                          <strong>Safety</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.safetyRatingDto.safetyRating }}
+                        </td>
+                        <td class="col-xs-3">
+                          <strong>Value</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.valueRatingDto.valueRating }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div><!-- .row -->
+              </div><!-- .row -->
+            {{/if }}
+          {{/each }}
+        </div><!-- .col-md-8 (hero reviews) -->
+      {{/with }}
+
+      {{#with villain.reviews }}
+        <div class="col-md-8 col-md-offset-2">
+          <h3 class="text-center">{{ ../villain.detail.make.name }} {{ ../villain.detail.model.name }}</h3>
+          {{#each reviews }}
+            {{#if this.include }}
+              <div class="row">
+                <div class="col-xs-12">
+
+                  ({{ this.userRating }}-star)
+                  <i class="glyphicon glyphicon-star"></i>
+                  <i class="glyphicon glyphicon-star"></i>
+                  <i class="glyphicon glyphicon-star"></i>
+                  <i class="glyphicon glyphicon-star"></i>
+                  <i class="glyphicon glyphicon-star"></i>
+
+                  <h4> {{ this.title }}</h4>
+                  <h4><small>Written by {{ this.author.authorName }} on {{ this.created }}</small></h4>
+                  <p>
+                    {{ this.text }}
+                  </p>
+                  <table class="table table-striped table-condensed">
+                    <tbody>
+                      <tr>
+                        <td class="col-xs-3">
+                          <strong>Performance</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.performanceRatingDto.performanceRating }}
+                        </td>
+                        <td class="col-xs-3">
+                          <strong>Comfort</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.comfortRatingDto.comfortRating }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="col-xs-3">
+                          <strong>Interior</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.interiorRatingDto.interiorRating }}
+                        </td>
+                        <td class="col-xs-3">
+                          <strong>Technology</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.technologyRatingDto.technologyRating }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="col-xs-3">
+                          <strong>Safety</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.safetyRatingDto.safetyRating }}
+                        </td>
+                        <td class="col-xs-3">
+                          <strong>Value</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.valueRatingDto.valueRating }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div><!-- .row -->
+              </div><!-- .row -->
+            {{/if }}
+          {{/each }}
+        </div><!-- .col-md-8 (villain reviews) -->
+      {{/with }}
+
     </section>
-    {{!--   end: Detail Block Partial --}}
+  {{!--   end: Consumer Reviews Block Partial --}}
+
+  {{!-- start: Detail Block Partial --}}
+    <section class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h2>Detail Table:</h2>
+      <hr>
+    </div><!-- .col-md-8 -->
+  </section>
+  {{!--   end: Detail Block Partial --}}
 
 </div><!-- .container-fluid -->
