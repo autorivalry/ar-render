@@ -9,9 +9,13 @@ router.get('/:id', function(req, res) {
   // get the matchup from the server
   var matchupRef = matchupsRef.child(req.params.id);
   matchupRef.once('value', function (snapshot) {
-    res.render('index', snapshot.val());
+    if (snapshot.exists()) {
+      res.render('index', snapshot.val());
+    } else {
+      res.status(404).render('404');
+    }
   });
-  
+
 });
 
 module.exports = router;
