@@ -10,7 +10,7 @@ router.get('/:id', function(req, res) {
   var matchupRef = matchupsRef.child(req.params.id);
   matchupRef.once('value', function (snapshot) {
     if (snapshot.exists()) {
-      res.render('index', snapshot.val());
+      res.render('matchup', snapshot.val());
     } else {
       res.status(404).render('404');
     }
