@@ -1,10 +1,21 @@
 var express = require('express');
 var router = express.Router();
+var Firebase = require("firebase");
+var matchupsRef = new Firebase('https://auto-rivalry.firebaseio.com/matchups');
 
 /* GET matchups listing. */
 router.get('/:id', function(req, res) {
-  res.render('index', {title: 'Matchup - ' + req.params.id });
-  // res.send('respond with a resource/view id: ' + req.params.id);
+
+  // get the matchup from the server
+  var matchupRef = matchupsRef.child(req.params.id);
+  matchupRef.once('value', function (snapshot) {
+    if (snapshot.exists()) {
+      res.render('matchup', snapshot.val());
+    } else {
+      res.status(404).render('404');
+    }
+  });
+
 });
 
 module.exports = router;

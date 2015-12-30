@@ -1,0 +1,418 @@
+<div class="container-fluid">
+
+  {{!-- start: Title Block Partial --}}
+  {{#if title }}
+    <section class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>{{ title }}</h1>
+      </div><!-- .col-md-8 -->
+    </section>
+  {{/if }}
+  {{!-- end: Title Block Partial --}}
+
+  {{!-- start: Hero vs. Villain --}}
+  {{#if hero }}
+    <section class="row">
+
+    </section>
+  {{/if }}
+  {{!-- end: Hero vs. Villain --}}
+
+  {{!-- start: Article Block Partial --}}
+  {{#if article }}
+    <section class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h2>Article:</h2>
+        <hr>
+      </div><!-- .col-md-8 -->
+      <div class="col-md-8 col-md-offset-2">
+        {{{ article }}}
+      </div><!-- .col-md-8 -->
+    </section>
+  {{/if }}
+  {{!-- end: Article Block Partial --}}
+
+  {{!-- start: Edmunds Reviews Block Partial --}}
+  {{#with hero.edmunds_ratings }}
+    <section id="edmunds-ratings" class="row">
+
+      <div class="col-md-8 col-md-offset-2">
+        <h2>Edmunds Ratings:</h2>
+        <hr>
+        <blockquote>
+          <p>
+            {{ summary }}
+          </p>
+          <footer><cite title="http://www.edmunds.com/new-car-ratings/">Edmunds.com</cite> new car rating summary.</footer>
+        </blockquote>
+      </div><!-- .col-md-8 -->
+
+      <div class="col-md-8 col-md-offset-2">
+        {{#each ratings }}
+          <h3>{{ this.title }}</h3>
+          <table class="table table-hover table-striped">
+            <thead>
+              <tr>
+                <th class="col-xs-4">&nbsp;</th>
+                <th class="col-xs-4 text-right">{{ ../../hero.detail.make.name }} {{ ../../hero.detail.model.name }}</th>
+                <th class="col-xs-4 text-right">{{ ../../villain.detail.make.name }} {{ ../../villain.detail.model.name }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each subRatings }}
+                <tr>
+                  <th>
+                    {{ title }}
+                  </th>
+                  <td class="text-right">
+                    {{ score }}
+                  </td>
+                  <td class="text-right">
+                    {{ @../index }}, {{ @index }}
+                  </td>
+                </tr>
+              {{/each }}
+            </tbody>
+          </table>
+        {{/each }}
+      </div><!-- .col-md-8 -->
+
+    </section>
+  {{/with }}
+  {{!--   end: Edmunds Reviews Detail Block Partial --}}
+
+  {{!-- start: Consumer Reviews Block Partial --}}
+    <section class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h2>Consumer Reviews:</h2>
+        <hr>
+      </div><!-- .col-md-8 -->
+
+      {{#with hero.reviews }}
+        <div class="col-md-8 col-md-offset-2">
+          <h3 class="text-center">{{ ../hero.detail.make.name }} {{ ../hero.detail.model.name }}</h3>
+          {{#each reviews }}
+            {{#if this.include }}
+              <div class="row">
+                <div class="col-xs-12">
+
+                  ({{ this.userRating }}-star)
+                  <i class="glyphicon glyphicon-star"></i>
+                  <i class="glyphicon glyphicon-star"></i>
+                  <i class="glyphicon glyphicon-star"></i>
+                  <i class="glyphicon glyphicon-star"></i>
+                  <i class="glyphicon glyphicon-star"></i>
+
+                  <h4> {{ this.title }}</h4>
+                  <h4><small>Written by {{ this.author.authorName }} on {{ this.created }}</small></h4>
+                  <p>
+                    {{ this.text }}
+                  </p>
+                  <table class="table table-striped table-condensed">
+                    <tbody>
+                      <tr>
+                        <td class="col-xs-3">
+                          <strong>Performance</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.performanceRatingDto.performanceRating }}
+                        </td>
+                        <td class="col-xs-3">
+                          <strong>Comfort</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.comfortRatingDto.comfortRating }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="col-xs-3">
+                          <strong>Interior</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.interiorRatingDto.interiorRating }}
+                        </td>
+                        <td class="col-xs-3">
+                          <strong>Technology</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.technologyRatingDto.technologyRating }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="col-xs-3">
+                          <strong>Safety</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.safetyRatingDto.safetyRating }}
+                        </td>
+                        <td class="col-xs-3">
+                          <strong>Value</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.valueRatingDto.valueRating }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div><!-- .row -->
+              </div><!-- .row -->
+            {{/if }}
+          {{/each }}
+        </div><!-- .col-md-8 (hero reviews) -->
+      {{/with }}
+
+      {{#with villain.reviews }}
+        <div class="col-md-8 col-md-offset-2">
+          <h3 class="text-center">{{ ../villain.detail.make.name }} {{ ../villain.detail.model.name }}</h3>
+          {{#each reviews }}
+            {{#if this.include }}
+              <div class="row">
+                <div class="col-xs-12">
+
+                  ({{ this.userRating }}-star)
+                  <i class="glyphicon glyphicon-star"></i>
+                  <i class="glyphicon glyphicon-star"></i>
+                  <i class="glyphicon glyphicon-star"></i>
+                  <i class="glyphicon glyphicon-star"></i>
+                  <i class="glyphicon glyphicon-star"></i>
+
+                  <h4> {{ this.title }}</h4>
+                  <h4><small>Written by {{ this.author.authorName }} on {{ this.created }}</small></h4>
+                  <p>
+                    {{ this.text }}
+                  </p>
+                  <table class="table table-striped table-condensed">
+                    <tbody>
+                      <tr>
+                        <td class="col-xs-3">
+                          <strong>Performance</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.performanceRatingDto.performanceRating }}
+                        </td>
+                        <td class="col-xs-3">
+                          <strong>Comfort</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.comfortRatingDto.comfortRating }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="col-xs-3">
+                          <strong>Interior</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.interiorRatingDto.interiorRating }}
+                        </td>
+                        <td class="col-xs-3">
+                          <strong>Technology</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.technologyRatingDto.technologyRating }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="col-xs-3">
+                          <strong>Safety</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.safetyRatingDto.safetyRating }}
+                        </td>
+                        <td class="col-xs-3">
+                          <strong>Value</strong>
+                        </td>
+                        <td class="col-xs-2 text-right">
+                          {{ this.valueRatingDto.valueRating }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div><!-- .row -->
+              </div><!-- .row -->
+            {{/if }}
+          {{/each }}
+        </div><!-- .col-md-8 (villain reviews) -->
+      {{/with }}
+
+    </section>
+  {{!--   end: Consumer Reviews Block Partial --}}
+
+  {{!-- start: Detail Block Partial --}}
+  {{#with hero.detail }}
+    <section class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h2>Detail Table:</h2>
+        <hr>
+      </div><!-- .col-md-8 -->
+      <div class="col-md-8 col-md-offset-2">
+        <div class="row">
+          <div class="col-xs-12">
+            <h3>Engine:</h3>
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th class="col-xs-4">&nbsp;</th>
+                  <th class="col-xs-4 text-right">{{ ../hero.detail.make.name }} {{ ../hero.detail.model.name }}</th>
+                  <th class="col-xs-4 text-right">{{ ../villain.detail.make.name }} {{ ../villain.detail.model.name }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#if engine.include_cylinder }}
+                <tr>
+                  <td><strong>Cylinders</strong></td>
+                  <td class="text-right">{{ engine.cylinder }}</td>
+                  <td class="text-right">Villain Cylinders</td>
+                </tr>
+                {{/if }}
+                {{#if engine.include_displacement }}
+                <tr>
+                  <td><strong>Displacement</strong></td>
+                  <td class="text-right">{{ engine.displacement }}</td>
+                  <td class="text-right">Villain Displacement</td>
+                </tr>
+                {{/if }}
+                {{#if engine.include_horsepower }}
+                <tr>
+                  <td><strong>Horsepower</strong></td>
+                  <td class="text-right">{{ engine.horsepower }} HP</td>
+                  <td class="text-right">Villain Horsepower</td>
+                </tr>
+                {{/if }}
+                {{#if engine.include_torque }}
+                <tr>
+                  <td><strong>Torque</strong></td>
+                  <td class="text-right">{{ engine.torque }} lb/ft</td>
+                  <td class="text-right">Villain Torque</td>
+                </tr>
+                {{/if }}
+                {{#if MPG.include_city_mpg }}
+                <tr>
+                  <td><strong>MPG - City</strong></td>
+                  <td class="text-right">{{ MPG.city }} MPG</td>
+                  <td class="text-right">Villain MPG - City</td>
+                </tr>
+                {{/if }}
+                {{#if MPG.include_highway }}
+                <tr>
+                  <td><strong>MPG - Highway</strong></td>
+                  <td class="text-right">{{ MPG.highway }} MPG</td>
+                  <td class="text-right">Villain MPG - Highway</td>
+                </tr>
+                {{/if }}
+                {{#if engine.include_fuel_type }}
+                <tr>
+                  <td><strong>Fuel Type</strong></td>
+                  <td class="text-right">{{ engine.fuelType }} lb/ft</td>
+                  <td class="text-right">Villain Fuel Type</td>
+                </tr>
+                {{/if }}
+                {{#if engine.include_compression }}
+                <tr>
+                  <td><strong>Compression Ratio</strong></td>
+                  <td class="text-right">{{ engine.compressionRatio }} lb/ft</td>
+                  <td class="text-right">Villain Compression Ratio</td>
+                </tr>
+                {{/if }}
+              </tbody>
+            </table>
+          </div><!-- .col-xs-12 -->
+        </div><!-- .row (engine) -->
+
+        <div class="row">
+          <div class="col-xs-12">
+            <h3>Transmission:</h3>
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th class="col-xs-4">&nbsp;</th>
+                  <th class="col-xs-4 text-right">{{ ../hero.detail.make.name }} {{ ../hero.detail.model.name }}</th>
+                  <th class="col-xs-4 text-right">{{ ../villain.detail.make.name }} {{ ../villain.detail.model.name }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#if transmission.include_drive }}
+                  <tr>
+                    <td><strong>Drive Type</strong></td>
+                    <td class="text-right">{{ drivenWheels }}</td>
+                    <td class="text-right">Villain Drive</td>
+                  </tr>
+                {{/if }}
+                {{#if transmission.include_speeds }}
+                  <tr>
+                    <td><strong>Speeds</strong></td>
+                    <td class="text-right">{{ transmission.numberOfSpeeds }}</td>
+                    <td class="text-right">Villain Speeds</td>
+                  </tr>
+                {{/if }}
+                {{#if transmission.include_type }}
+                  <tr>
+                    <td><strong>Transmission Type</strong></td>
+                    <td class="text-right">{{ transmission.transmissionType }}</td>
+                    <td class="text-right">Villain Trans. Type</td>
+                  </tr>
+                {{/if }}
+              </tbody>
+            </table>
+          </div><!-- .col-xs-12 -->
+        </div><!-- .row (transmission) -->
+
+        <div class="row">
+          <div class="col-xs-12">
+            <h3>Body:</h3>
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th class="col-xs-4">&nbsp;</th>
+                  <th class="col-xs-4 text-right">{{ ../hero.detail.make.name }} {{ ../hero.detail.model.name }}</th>
+                  <th class="col-xs-4 text-right">{{ ../villain.detail.make.name }} {{ ../villain.detail.model.name }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#if include_doors }}
+                  <tr>
+                    <td><strong>Number of Doors</strong></td>
+                    <td class="text-right">{{ numOfDoors }}</td>
+                    <td class="text-right">Villain Doors</td>
+                  </tr>
+                {{/if }}
+                {{#if categories.include_epa }}
+                  <tr>
+                    <td><strong>EPA Class</strong></td>
+                    <td class="text-right">{{ categories.EPAClass }}</td>
+                    <td class="text-right">Villain Class</td>
+                  </tr>
+                {{/if }}
+                {{#if categories.include_type }}
+                  <tr>
+                    <td><strong>Body Type</strong></td>
+                    <td class="text-right">{{ categories.vehicleType }}</td>
+                    <td class="text-right">Villain Body Type</td>
+                  </tr>
+                {{/if }}
+                {{#if categories.include_size }}
+                  <tr>
+                    <td><strong>Vehicle Size</strong></td>
+                    <td class="text-right">{{ categories.vehicleSize }}</td>
+                    <td class="text-right">Villain Vehicle Size</td>
+                  </tr>
+                {{/if }}
+                {{#if categories.include_style }}
+                  <tr>
+                    <td><strong>Vehicle Style</strong></td>
+                    <td class="text-right">{{ categories.vehicleStyle }}</td>
+                    <td class="text-right">Villain Vehicle Style</td>
+                  </tr>
+                {{/if }}
+              </tbody>
+            </table>
+          </div><!-- .col-xs-12 -->
+        </div><!-- .row (body) -->
+
+      </div><!-- .col-md-8 -->
+    </section>
+  {{/with }}
+  {{!--   end: Detail Block Partial --}}
+
+</div><!-- .container-fluid -->
