@@ -1,4 +1,11 @@
 
 
-  <h1>{{title }}</h1>
-  <p>Welcome to {{title }}</p>
+  <h1>
+    {{#if glyph }}
+    <i class="{{ glyph }}"></i>
+    {{/if }}
+    {{title }}</h1>
+  <p>
+    Welcome to {{ site }}. <br>
+    Please visit <a href="{{ url }}" alt="{{ link }}">{{ link }}</a> for more information.
+  </p>
