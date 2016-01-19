@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>{{title }} - Auto Club</title>
+
+		<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
+
+		<link href="/auto-club/css/master.css" rel="stylesheet">
+		<link href="/auto-club/css/colors.css" rel="stylesheet">
+
+
+		<!--[if lt IE 9]>
+		<script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    {{#if ENV_DEVELOPMENT}}
+      <script src="http://localhost:35729/livereload.js"></script>
+    {{/if}}
+
+	</head>
+	<body class="m-compare" data-scrolling-animations="false">
+
+		<!-- Loader -->
+		<div id="page-preloader"><span class="spinner"></span></div>
+		<!-- Loader end -->
+
+
+    {{{ body }}}
+		<!--Main-->
+		<script src="/auto-club/js/jquery-1.11.3.min.js"></script>
+		<script src="/auto-club/js/jquery-ui.min.js"></script>
+		<script src="/auto-club/js/bootstrap.min.js"></script>
+		<script src="/auto-club/js/modernizr.custom.js"></script>
+
+		<script src="assets/rendro-easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+		<script src="/auto-club/js/waypoints.min.js"></script>
+		<script src="/auto-club/js/jquery.easypiechart.min.js"></script>
+		<script src="/auto-club/js/classie.js"></script>
+
+		<!--Owl Carousel-->
+		<script src="assets/owl-carousel/owl.carousel.min.js"></script>
+		<!--bxSlider-->
+		<script src="assets/bxslider/jquery.bxslider.js"></script>
+		<!-- jQuery UI Slider -->
+		<script src="assets/slider/jquery.ui-slider.js"></script>
+
+		<!--Theme-->
+		<script src="/auto-club/js/jquery.smooth-scroll.js"></script>
+		<script src="/auto-club/js/wow.min.js"></script>
+		<script src="/auto-club/js/jquery.placeholder.min.js"></script>
+		<script src="/auto-club/js/theme.js"></script>
+	</body>
+</html>
