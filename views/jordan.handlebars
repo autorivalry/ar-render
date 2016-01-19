@@ -33,7 +33,9 @@
             <div class="b-detail__main-info-text wow zoomInUp" data-wow-delay="0.5s">
               <div class="b-detail__main-aside-about-form-links">
                 <a href="#" class="j-tab m-active s-lineDownCenter" data-to='#article'>Head to Head</a>
-                <a href="#" class="j-tab" data-to='#info2'>Professional Reviews</a>
+                {{#if hero.edmunds_ratings }}
+                  <a href="#" class="j-tab" data-to='#info2'>Professional Reviews</a>
+                {{/if }}
                 <a href="#" class="j-tab" data-to='#info3'>Consumer Reviews</a>
                 <a href="#" class="j-tab" data-to='#info4'>General Specs</a>
               </div>
