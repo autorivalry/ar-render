@@ -39,35 +39,114 @@
               <div id="article">
                 {{{ article }}}
               </div>
+
               <div id="info2">
+                <p>
+                  {{ hero.edmunds_ratings.summary }}
+                </p>
+
                 {{#each hero.edmunds_ratings.ratings }}
-                  <h3>{{ this.title }}</h3>
-                  <table class="table table-hover table-striped">
-                    <thead>
-                      <tr>
-                        <th class="col-xs-4">&nbsp;</th>
-                        <th class="col-xs-4 text-right">{{ ../../hero.detail.make.name }} {{ ../../hero.detail.model.name }}</th>
-                        <th class="col-xs-4 text-right">{{ ../../villain.detail.make.name }} {{ ../../villain.detail.model.name }}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {{#each subRatings }}
-                        <tr>
-                          <th>
-                            {{ title }}
-                          </th>
-                          <td class="text-right">
-                            {{ score }}
-                          </td>
-                          <td class="text-right">
-                            {{ @../index }}, {{ @index }}
-                          </td>
-                        </tr>
-                      {{/each }}
-                    </tbody>
-                  </table>
+                  {{#if this.include }}
+
+                    <div class="b-compare__block wow zoomInUp" data-wow-delay="0.3s">
+
+                      <div class="b-compare__block-title s-whiteShadow m-active">
+                        <h3 class="s-titleDet">{{ this.title }}</h3>
+                        <a class="j-more" href="#"><span class="fa fa-angle-left"></span></a>
+                      </div>
+
+                      <div class="b-compare__block-inside j-inside m-active">
+                        <div class="row">
+                          <div class="col-xs-12">
+                            {{#if this.hero_summary }}
+                              <p>
+                                {{ this.summary }}
+                              </p>
+                            {{/if }}
+                            {{#if this.villain_summary }}
+                              <p>
+                                {{#with (lookup ../../../villain.edmunds_ratings.ratings @index) }}
+                                  {{ summary }}
+                                {{/with }}
+                              </p>
+                            {{/if }}
+                          </div>
+                        </div>
+                      </div><!-- .b-compare__block-inside -->
+
+                      <div class="b-compare__block-inside j-inside m-active">
+                        <div class="row">
+                          <div class="col-xs-4">
+                            <div class="b-compare__block-inside-title">
+                              Make / Year
+                            </div>
+                          </div>
+                          <div class="col-xs-4">
+                            <div class="b-compare__block-inside-value">
+                              <strong>{{ ../../hero.detail.make.name }} {{ ../../hero.detail.model.name }}</strong>
+                            </div>
+                          </div>
+                          <div class="col-xs-4">
+                            <div class="b-compare__block-inside-value">
+                              <strong>{{ ../../villain.detail.make.name }} {{ ../../villain.detail.model.name }}</strong>
+                            </div>
+                          </div>
+                        </div><!-- .row -->
+
+                        <div class="row">
+                          <div class="col-xs-4">
+                            <div class="b-compare__block-inside-title">
+                              Overall Score
+                            </div>
+                          </div>
+                          <div class="col-xs-4">
+                            <div class="b-compare__block-inside-value">
+                              <strong>{{ this.score }}</strong>
+                            </div>
+                          </div>
+                          <div class="col-xs-4">
+                            <div class="b-compare__block-inside-value">
+                              <strong>
+                                {{#with (lookup ../../villain.edmunds_ratings.ratings @index) }}
+                                  {{ score }}
+                                {{/with }}
+                              </strong>
+                            </div>
+                          </div>
+                        </div><!-- .row -->
+
+                        {{#each subRatings }}
+                          <div class="row">
+                            <div class="col-xs-4">
+                              <div class="b-compare__block-inside-title">
+                                {{ title }}
+                              </div>
+                            </div>
+                            <div class="col-xs-4">
+                              <div class="b-compare__block-inside-value">
+                                {{ score }}
+                              </div>
+                            </div>
+                            <div class="col-xs-4">
+                              <div class="b-compare__block-inside-value">
+                                {{#with (lookup ../../../villain.edmunds_ratings.ratings @../index) }}
+                                  {{#with (lookup subRatings @index) }}
+                                    {{ score }}
+                                  {{/with }}
+                                {{/with }}
+                              </div>
+                            </div>
+                          </div><!-- .row -->
+                        {{/each }}
+
+                      </div><!-- .b-compare__block-inside -->
+
+                    </div><!-- .b-compare__block -->
+
+                  {{/if }}
                 {{/each }}
-              </div>
+              </div><!-- #info2 -->
+
               <div id="info3">
                 <p>Vestibulum auctor lacinia nunc. Nunc ut turpis.Sed libero magna, fermentum viverra, egestas non, fermentum sed, elit. Aenean
                   erat orci, mollis quis gravida sed, mollis a, quam. Integer fermentum neque egestas orci. Nunc posuere, felis sit amet faucibus
