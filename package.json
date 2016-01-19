@@ -11,6 +11,7 @@
     "express": "^4.13.3",
     "express-handlebars": "^2.0.1",
     "firebase": "^2.3.2",
+    "handlebars-helper-repeat": "^0.3.1",
     "morgan": "^1.6.1",
     "serve-favicon": "^2.3.0"
   },
