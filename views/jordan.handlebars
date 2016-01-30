@@ -106,21 +106,26 @@
                           </div>
                           <div class="col-xs-4">
                             <div class="b-compare__block-inside-value">
-                              <strong>
-                                {{#is heroRating.score '===' heroRating.score }}
-                                  {{ heroRating.score }}
+                              {{#with (lookup ../../villain.edmunds_ratings.ratings @index) }}
+                                {{#is heroRating.score '>' score }}
+                                  <strong class="text-success">{{ heroRating.score }}</strong>
+                                  <i class="fa fa-check-circle-o text-success"></i>
+                                {{else }}
+                                  <strong>{{ heroRating.score }}</strong>
                                 {{/is }}
-                              </strong>
+                              {{/with}}
                             </div>
                           </div>
                           <div class="col-xs-4">
                             <div class="b-compare__block-inside-value">
-                              <strong>
-                                {{#with (lookup ../../villain.edmunds_ratings.ratings @index) }}
-                                  {{ score }}
-                                {{/with }}
-                                <!-- <i class="fa fa-times-circle-o text-danger"></i> -->
-                              </strong>
+                              {{#with (lookup ../../villain.edmunds_ratings.ratings @index) }}
+                                {{#is heroRating.score '>' score }}
+                                  <strong class="text-danger">{{ score }}</strong>
+                                  <i class="fa fa-times-circle-o text-danger"></i>
+                                {{else }}
+                                  <strong>{{ score }}</strong>
+                                {{/is }}
+                              {{/with}}
                             </div>
                           </div>
                         </div><!-- .row -->
@@ -134,14 +139,28 @@
                             </div>
                             <div class="col-xs-4">
                               <div class="b-compare__block-inside-value">
-                                {{ heroSubRating.score }}
+                                {{#with (lookup ../../../villain.edmunds_ratings.ratings @../index) }}
+                                  {{#with (lookup subRatings @index) }}
+                                    {{#is heroSubRating.score '>' score }}
+                                      <strong class="text-success">{{ heroSubRating.score }}</strong>
+                                      <i class="fa fa-check-circle-o text-success"></i>
+                                    {{else }}
+                                      {{ heroSubRating.score }}
+                                    {{/is }}
+                                  {{/with }}
+                                {{/with }}
                               </div>
                             </div>
                             <div class="col-xs-4">
                               <div class="b-compare__block-inside-value">
                                 {{#with (lookup ../../../villain.edmunds_ratings.ratings @../index) }}
                                   {{#with (lookup subRatings @index) }}
-                                    {{ score }}
+                                    {{#is heroSubRating.score '>' score }}
+                                      <strong class="text-danger">{{ score }}</strong>
+                                      <i class="fa fa-times-circle-o text-danger"></i>
+                                    {{else }}
+                                      {{ score }}
+                                    {{/is }}
                                   {{/with }}
                                 {{/with }}
                               </div>
