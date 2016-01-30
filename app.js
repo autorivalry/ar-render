@@ -23,12 +23,34 @@ app.locals.ENV_DEVELOPMENT = env == 'development';
 var hbs = exphbs.create({
     // Specify helpers which are only registered on this instance.
     helpers: {
-        repeat: helperRepeat
+        repeat: helperRepeat,
+        is: function (v1, operator, v2, options) {
+
+          switch (operator) {
+            case '==':
+              return (v1 == v2) ? options.fn(this) : options.inverse(this);
+            case '===':
+              return (v1 === v2) ? options.fn(this) : options.inverse(this);
+            case '<':
+              return (v1 < v2) ? options.fn(this) : options.inverse(this);
+            case '<=':
+              return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+            case '>':
+              return (v1 > v2) ? options.fn(this) : options.inverse(this);
+            case '>=':
+              return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+            case '&&':
+              return (v1 && v2) ? options.fn(this) : options.inverse(this);
+            case '||':
+              return (v1 || v2) ? options.fn(this) : options.inverse(this);
+            default:
+              return options.inverse(this);
+          }
+        }
     },
     defaultLayout: 'main',
     partialsDir: ['views/partials/']
 });
-
 
 app.engine('handlebars', hbs.engine);
 app.set('views', path.join(__dirname, 'views'));

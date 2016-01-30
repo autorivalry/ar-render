@@ -50,8 +50,8 @@
                   {{ hero.edmunds_ratings.summary }}
                 </p>
 
-                {{#each hero.edmunds_ratings.ratings }}
-                  {{#if this.include }}
+                {{#each hero.edmunds_ratings.ratings as |heroRating|}}
+                  {{#if heroRating.include }}
 
                     <div class="b-compare__block wow zoomInUp" data-wow-delay="0.3s">
 
@@ -63,12 +63,12 @@
                       <div class="b-compare__block-inside j-inside m-active">
                         <div class="row">
                           <div class="col-xs-12">
-                            {{#if this.hero_summary }}
+                            {{#if heroRating.hero_summary }}
                               <p>
-                                {{ this.summary }}
+                                {{ heroRating.summary }}
                               </p>
                             {{/if }}
-                            {{#if this.villain_summary }}
+                            {{#if heroRating.villain_summary }}
                               <p>
                                 {{#with (lookup ../../../villain.edmunds_ratings.ratings @index) }}
                                   {{ summary }}
@@ -106,7 +106,11 @@
                           </div>
                           <div class="col-xs-4">
                             <div class="b-compare__block-inside-value">
-                              <strong>{{ this.score }}</strong>
+                              <strong>
+                                {{#is heroRating.score '===' heroRating.score }}
+                                  {{ heroRating.score }}
+                                {{/is }}
+                              </strong>
                             </div>
                           </div>
                           <div class="col-xs-4">
@@ -115,21 +119,22 @@
                                 {{#with (lookup ../../villain.edmunds_ratings.ratings @index) }}
                                   {{ score }}
                                 {{/with }}
+                                <!-- <i class="fa fa-times-circle-o text-danger"></i> -->
                               </strong>
                             </div>
                           </div>
                         </div><!-- .row -->
 
-                        {{#each subRatings }}
+                        {{#each heroRating.subRatings as |heroSubRating|}}
                           <div class="row">
                             <div class="col-xs-4">
                               <div class="b-compare__block-inside-title">
-                                {{ title }}
+                                {{ heroSubRating.title }}
                               </div>
                             </div>
                             <div class="col-xs-4">
                               <div class="b-compare__block-inside-value">
-                                {{ score }}
+                                {{ heroSubRating.score }}
                               </div>
                             </div>
                             <div class="col-xs-4">
