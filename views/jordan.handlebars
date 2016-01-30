@@ -9,6 +9,22 @@
 
 <section class="b-detail s-shadow">
   <div class="container">
+
+    <section id="matchup-detail" class="row">
+      <div class="col-md-5 col-xs-6 col-md-offset-1">
+        <div class="b-compare__images-item wow zoomInUp" data-wow-delay="0.3s">
+          <img class="img-responsive center-block" src="https://placehold.it/600x330?text={{ hero.detail.make.name }}+{{ hero.detail.model.name }}" alt="jaguar" />
+          <div class="b-compare__images-item-price m-right"><div class="b-compare__images-item-price-vs">vs</div>{{ hero.detail.make.name }} {{ hero.detail.model.name }}</div>
+        </div>
+      </div>
+      <div class="col-md-5 col-xs-6">
+        <div class="b-compare__images-item wow zoomInUp" data-wow-delay="0.3s">
+          <img class="img-responsive center-block" src="https://placehold.it/600x330?text={{ villain.detail.make.name }}+{{ villain.detail.model.name }}" alt="merc" />
+          <div class="b-compare__images-item-price m-left">{{ villain.detail.make.name }} {{ villain.detail.model.name }}</div>
+        </div>
+      </div>
+    </section>
+
     <div class="row">
       <div class="col-md-10 col-xs-12 col-md-offset-1">
         <header class="b-detail__head s-lineDownLeft wow zoomInUp" data-wow-delay="0.5s">
