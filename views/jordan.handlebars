@@ -344,12 +344,22 @@
                         </div>
                         <div class="col-xs-4">
                           <div class="b-compare__block-inside-value">
-                            {{ hero.detail.engine.horsepower }} hp
+                            {{#is hero.detail.engine.horsepower '>' villain.detail.engine.horsepower }}
+                              <strong class="text-success">{{ hero.detail.engine.horsepower }} hp</strong>
+                              <i class="fa fa-check-circle-o text-success"></i>
+                            {{else }}
+                              {{ hero.detail.engine.horsepower }} hp
+                            {{/is }}
                           </div>
                         </div>
                         <div class="col-xs-4">
                           <div class="b-compare__block-inside-value">
-                            {{ villain.detail.engine.horsepower }} hp
+                            {{#is hero.detail.engine.horsepower '>' villain.detail.engine.horsepower }}
+                              <strong class="text-danger">{{ villain.detail.engine.horsepower }} hp</strong>
+                              <i class="fa fa-times-circle-o text-danger"></i>
+                            {{else }}
+                              {{ villain.detail.engine.horsepower }} hp
+                            {{/is }}
                           </div>
                         </div>
                       </div><!-- Horsepower -->
@@ -363,12 +373,22 @@
                         </div>
                         <div class="col-xs-4">
                           <div class="b-compare__block-inside-value">
-                            {{ hero.detail.engine.torque }} lbft
+                            {{#is hero.detail.engine.torque '>' villain.detail.engine.torque }}
+                              <strong class="text-success">{{ hero.detail.engine.torque }} lbft</strong>
+                              <i class="fa fa-check-circle-o text-success"></i>
+                            {{else }}
+                              {{ hero.detail.engine.torque }} lbft
+                            {{/is }}
                           </div>
                         </div>
                         <div class="col-xs-4">
                           <div class="b-compare__block-inside-value">
-                            {{ villain.detail.engine.torque }} lbft
+                            {{#is hero.detail.engine.torque '>' villain.detail.engine.torque }}
+                              <strong class="text-danger">{{ villain.detail.engine.torque }} lbft</strong>
+                              <i class="fa fa-times-circle-o text-danger"></i>
+                            {{else }}
+                              {{ villain.detail.engine.torque }} lbft
+                            {{/is }}
                           </div>
                         </div>
                       </div><!-- Torque -->
@@ -382,12 +402,22 @@
                         </div>
                         <div class="col-xs-4">
                           <div class="b-compare__block-inside-value">
-                            {{ hero.detail.MPG.city }} mpg
+                            {{#is hero.detail.MPG.city '>' villain.detail.MPG.city }}
+                              <strong class="text-success">{{ hero.detail.MPG.city }} mpg</strong>
+                              <i class="fa fa-check-circle-o text-success"></i>
+                            {{else }}
+                              {{ hero.detail.MPG.city }} mpg
+                            {{/is }}
                           </div>
                         </div>
                         <div class="col-xs-4">
                           <div class="b-compare__block-inside-value">
-                            {{ villain.detail.MPG.city }} mpg
+                            {{#is hero.detail.MPG.city '>' villain.detail.MPG.city }}
+                              <strong class="text-danger">{{ villain.detail.MPG.city }} mpg</strong>
+                              <i class="fa fa-times-circle-o text-danger"></i>
+                            {{else }}
+                              {{ villain.detail.MPG.city }} mpg
+                            {{/is }}
                           </div>
                         </div>
                       </div><!-- City MPG -->
@@ -401,12 +431,22 @@
                         </div>
                         <div class="col-xs-4">
                           <div class="b-compare__block-inside-value">
-                            {{ hero.detail.MPG.highway }} mpg
+                            {{#is hero.detail.MPG.highway '>' villain.detail.MPG.highway }}
+                              <strong class="text-success">{{ hero.detail.MPG.highway }} mpg</strong>
+                              <i class="fa fa-check-circle-o text-success"></i>
+                            {{else }}
+                              {{ hero.detail.MPG.highway }} mpg
+                            {{/is }}
                           </div>
                         </div>
                         <div class="col-xs-4">
                           <div class="b-compare__block-inside-value">
-                            {{ villain.detail.MPG.highway }} mpg
+                            {{#is hero.detail.MPG.highway '>' villain.detail.MPG.highway }}
+                              <strong class="text-danger">{{ villain.detail.MPG.highway }} mpg</strong>
+                              <i class="fa fa-times-circle-o text-danger"></i>
+                            {{else }}
+                              {{ villain.detail.MPG.highway }} mpg
+                            {{/is }}
                           </div>
                         </div>
                       </div><!-- Highway MPG -->
@@ -504,12 +544,22 @@
                         </div>
                         <div class="col-xs-4">
                           <div class="b-compare__block-inside-value">
-                            {{ hero.detail.transmission.numberOfSpeeds }}
+                            {{#is hero.detail.transmission.numberOfSpeeds '>' villain.detail.transmission.numberOfSpeeds }}
+                              <strong class="text-success">{{ hero.detail.transmission.numberOfSpeeds }}</strong>
+                              <i class="fa fa-check-circle-o text-success"></i>
+                            {{else }}
+                              {{ hero.detail.transmission.numberOfSpeeds }}
+                            {{/is }}
                           </div>
                         </div>
                         <div class="col-xs-4">
                           <div class="b-compare__block-inside-value">
-                            {{ villain.detail.transmission.numberOfSpeeds }}
+                            {{#is hero.detail.transmission.numberOfSpeeds '>' villain.detail.transmission.numberOfSpeeds }}
+                              <strong class="text-danger">{{ villain.detail.transmission.numberOfSpeeds }}</strong>
+                              <i class="fa fa-times-circle-o text-danger"></i>
+                            {{else }}
+                              {{ villain.detail.transmission.numberOfSpeeds }}
+                            {{/is }}
                           </div>
                         </div>
                       </div><!-- Number of Speeds -->
