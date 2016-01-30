@@ -33,7 +33,9 @@
             <div class="b-detail__main-info-text wow zoomInUp" data-wow-delay="0.5s">
               <div class="b-detail__main-aside-about-form-links">
                 <a href="#" class="j-tab m-active s-lineDownCenter" data-to='#article'>Head to Head</a>
-                <a href="#" class="j-tab" data-to='#info2'>Professional Reviews</a>
+                {{#if hero.edmunds_ratings }}
+                  <a href="#" class="j-tab" data-to='#info2'>Professional Reviews</a>
+                {{/if }}
                 <a href="#" class="j-tab" data-to='#info3'>Consumer Reviews</a>
                 <a href="#" class="j-tab" data-to='#info4'>General Specs</a>
               </div>
@@ -151,15 +153,81 @@
               </div><!-- #info2 -->
 
               <div id="info3">
-                <h2>Consumer Reviews</h2>
-                <p>Vestibulum auctor lacinia nunc. Nunc ut turpis.Sed libero magna, fermentum viverra, egestas non, fermentum sed, elit. Aenean
-                  erat orci, mollis quis gravida sed, mollis a, quam. Integer fermentum neque egestas orci. Nunc posuere, felis sit amet faucibus
-                  convallis tortor enim viverra quam, hendrerit interdum dui quam ut lacus. Donec quis quam in ante condimentum blan erdit.
-                  Integer et urna. Vestibulum nisl. Ut ante est, imperdiet dignissim eleifend sit amet lacinia tempor justo. Nunc ornare atm nibh.
-                  Fusce ut felis. </p>
-                <p>Donec ullamcorper nisi ac lectus. Proin at orci. Suspendisse nec orci nec elit convallis porttitor. Praesent sit amet turpis eu nisl
-                  faucibus pharetra. Sed eu felis. Etiam eleifend nisl nec lectus. Ut suscipit pede eu diam. Aenean vitae quam. Cras felis. Sed utdw
-                  nibh. Duis libero. Vivamus pharetra libero non facilisis imperdiet mi augue feugiat nisl.</p>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <h2>{{ hero.detail.make.name }} {{ hero.detail.model.name }} Consumer Reviews: </h2>
+                  </div>
+                </div>
+                <div class="b-items__cars">
+                  {{#each hero.reviews.reviews }}
+                    {{#if this.include }}
+        							<div class="b-items__cars-one wow zoomInUp" data-wow-delay="0.5s">
+        								<div class="b-items__cars-one-info" style="margin: 15px;">
+        									<header class="b-items__cars-one-info-header s-lineDownLeft">
+        										<h2>{{ this.title }}</h2>
+        										<span>
+                              {{#repeat this.userRating }}
+                                <i class="fa fa-star"></i>
+                              {{/repeat}}
+                            </span>
+        									</header>
+        									<p>
+        										{{ this.text }}
+        									</p>
+                          <div class="b-items__cars-one-info-km">
+                            <span class="fa fa-pencil"></span> Written by {{ this.author.authorName }} <!-- on Review Date -->
+                          </div>
+        									<!-- <div class="b-items__cars-one-info-details">
+        										<div class="b-featured__item-links">
+        											<a href="#">Registered 2015</a>
+        											<a href="#">Used</a>
+        											<a href="#">8-Speed Automatic</a>
+        											<a href="#">Petrol</a>
+        										</div>
+        									</div> -->
+        								</div>
+        							</div>
+                    {{/if }}
+                  {{/each }}
+    						</div><!-- .b-items__cars -->
+
+                <div class="row">
+                  <div class="col-xs-12">
+                    <h2>{{ villain.detail.make.name }} {{ villain.detail.model.name }} Consumer Reviews: </h2>
+                  </div>
+                </div>
+                <div class="b-items__cars">
+                  {{#each villain.reviews.reviews }}
+                    {{#if this.include }}
+        							<div class="b-items__cars-one wow zoomInUp" data-wow-delay="0.5s">
+        								<div class="b-items__cars-one-info" style="margin: 15px;">
+        									<header class="b-items__cars-one-info-header s-lineDownLeft">
+        										<h2 style="border-color: red;">{{ this.title }}</h2>
+        										<span style="background-color: red;">
+                              {{#repeat this.userRating }}
+                                <i class="fa fa-star"></i>
+                              {{/repeat}}
+                            </span>
+        									</header>
+        									<p>
+        										{{ this.text }}
+        									</p>
+                          <div class="b-items__cars-one-info-km">
+                            <span class="fa fa-pencil"></span> Written by {{ this.author.authorName }} <!-- on Review Date -->
+                          </div>
+        									<!-- <div class="b-items__cars-one-info-details">
+        										<div class="b-featured__item-links">
+        											<a href="#">Registered 2015</a>
+        											<a href="#">Used</a>
+        											<a href="#">8-Speed Automatic</a>
+        											<a href="#">Petrol</a>
+        										</div>
+        									</div> -->
+        								</div>
+        							</div>
+                    {{/if }}
+                  {{/each }}
+    						</div><!-- .b-items__cars -->
               </div>
 
               <div id="info4">
