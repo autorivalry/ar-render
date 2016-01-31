@@ -27,8 +27,6 @@
         <div class="b-compare__images-item wow zoomInUp" data-wow-delay="0.3s">
           {{#if hero.image_url }}
             <img class="img-responsive center-block" src="{{ hero.image_url }}" alt="jaguar" />
-          {{ else }}
-            <img class="img-responsive center-block" src="https://placehold.it/600x330?text={{ hero.detail.make.name }}+{{ hero.detail.model.name }}" alt="jaguar" />
           {{/if}}
           <div class="b-compare__images-item-price m-right"><div class="b-compare__images-item-price-vs">vs</div>{{ hero.detail.make.name }} {{ hero.detail.model.name }}</div>
         </div>
@@ -37,8 +35,6 @@
         <div class="b-compare__images-item wow zoomInUp" data-wow-delay="0.3s">
           {{#if villain.image_url}}
             <img class="img-responsive center-block" src="{{ villain.image_url }}" alt="merc" />
-          {{else }}
-            <img class="img-responsive center-block" src="https://placehold.it/600x330?text={{ villain.detail.make.name }}+{{ villain.detail.model.name }}" alt="merc" />
           {{/if }}
           <div class="b-compare__images-item-price m-left">{{ villain.detail.make.name }} {{ villain.detail.model.name }}</div>
         </div>
