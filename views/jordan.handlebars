@@ -25,18 +25,26 @@
     <section id="matchup-detail" class="row">
       <div class="col-md-5 col-xs-6 col-md-offset-1">
         <div class="b-compare__images-item wow zoomInUp" data-wow-delay="0.3s">
-          <img class="img-responsive center-block" src="https://placehold.it/600x330?text={{ hero.detail.make.name }}+{{ hero.detail.model.name }}" alt="jaguar" />
+          {{#if hero.image_url }}
+            <img class="img-responsive center-block" src="{{ hero.image_url }}" alt="jaguar" />
+          {{ else }}
+            <img class="img-responsive center-block" src="https://placehold.it/600x330?text={{ hero.detail.make.name }}+{{ hero.detail.model.name }}" alt="jaguar" />
+          {{/if}}
           <div class="b-compare__images-item-price m-right"><div class="b-compare__images-item-price-vs">vs</div>{{ hero.detail.make.name }} {{ hero.detail.model.name }}</div>
         </div>
       </div>
       <div class="col-md-5 col-xs-6">
         <div class="b-compare__images-item wow zoomInUp" data-wow-delay="0.3s">
-          <img class="img-responsive center-block" src="https://placehold.it/600x330?text={{ villain.detail.make.name }}+{{ villain.detail.model.name }}" alt="merc" />
+          {{#if villain.image_url}}
+            <img class="img-responsive center-block" src="{{ villain.image_url }}" alt="merc" />
+          {{else }}
+            <img class="img-responsive center-block" src="https://placehold.it/600x330?text={{ villain.detail.make.name }}+{{ villain.detail.model.name }}" alt="merc" />
+          {{/if }}
           <div class="b-compare__images-item-price m-left">{{ villain.detail.make.name }} {{ villain.detail.model.name }}</div>
         </div>
       </div>
     </section>
-    
+
     <div class="b-detail__main">
       <div class="row">
         <div class="col-md-10 col-xs-12 col-md-offset-1">
@@ -267,22 +275,6 @@
 
               <div id="info4">
                 <h2>General Specs & Information</h2>
-                <div class="b-compare__images">
-                  <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-6 col-md-offset-4 col-sm-offset-4">
-                      <div class="b-compare__images-item s-lineDownCenter wow zoomInUp" data-wow-delay="0.3s">
-                        <!-- <img class="img-responsive center-block" src="https://placehold.it/400x230?text={{ hero.detail.make.name }}+{{ hero.detail.model.name }}" alt="jaguar" /> -->
-                        <div class="b-compare__images-item-price m-right"><div class="b-compare__images-item-price-vs">vs</div>{{ hero.detail.make.name }} {{ hero.detail.model.name }}</div>
-                      </div>
-                    </div><!-- .col-md-4 -->
-                    <div class="col-md-4 col-sm-4 col-xs-6 ">
-                      <div class="b-compare__images-item s-lineDownCenter wow zoomInUp" data-wow-delay="0.3s">
-                        <!-- <img class="img-responsive center-block" src="https://placehold.it/400x230?text={{ villain.detail.make.name }}+{{ villain.detail.model.name }}" alt="merc" /> -->
-                        <div class="b-compare__images-item-price m-left">{{ villain.detail.make.name }} {{ villain.detail.model.name }}</div>
-                      </div>
-                    </div><!-- .col-md-4 -->
-                  </div>
-                </div><!-- .b-compare__images -->
                 <div class="b-compare__block wow zoomInUp" data-wow-delay="0.3s">
                   <div class="b-compare__block-title s-whiteShadow m-active">
                     <h3 class="s-titleDet">ENGINE</h3>
@@ -298,12 +290,12 @@
                         </div>
                         <div class="col-xs-4">
                           <div class="b-compare__block-inside-value">
-                            {{ hero.detail.make.name }} {{ hero.detail.model.name }}
+                            <strong>{{ hero.detail.make.name }} {{ hero.detail.model.name }}</strong>
                           </div>
                         </div>
                         <div class="col-xs-4">
                           <div class="b-compare__block-inside-value">
-                            {{ villain.detail.make.name }} {{ villain.detail.model.name }}
+                            <strong>{{ villain.detail.make.name }} {{ villain.detail.model.name }}</strong>
                           </div>
                         </div>
                       </div><!-- Make / Year -->
@@ -517,12 +509,12 @@
                         </div>
                         <div class="col-xs-4">
                           <div class="b-compare__block-inside-value">
-                            {{ hero.detail.make.name }} {{ hero.detail.model.name }}
+                            <strong>{{ hero.detail.make.name }} {{ hero.detail.model.name }}</strong>
                           </div>
                         </div>
                         <div class="col-xs-4">
                           <div class="b-compare__block-inside-value">
-                            {{ villain.detail.make.name }} {{ villain.detail.model.name }}
+                            <strong>{{ villain.detail.make.name }} {{ villain.detail.model.name }}</strong>
                           </div>
                         </div>
                       </div><!-- Make / Year -->
@@ -611,12 +603,12 @@
                         </div>
                         <div class="col-xs-4">
                           <div class="b-compare__block-inside-value">
-                            {{ hero.detail.make.name }} {{ hero.detail.model.name }}
+                            <strong>{{ hero.detail.make.name }} {{ hero.detail.model.name }}</strong>
                           </div>
                         </div>
                         <div class="col-xs-4">
                           <div class="b-compare__block-inside-value">
-                            {{ villain.detail.make.name }} {{ villain.detail.model.name }}
+                            <strong>{{ villain.detail.make.name }} {{ villain.detail.model.name }}</strong>
                           </div>
                         </div>
                       </div><!-- .row -->
