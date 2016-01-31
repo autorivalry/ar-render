@@ -10,6 +10,18 @@
 <section class="b-detail s-shadow">
   <div class="container">
 
+
+    <div class="row">
+      <div class="col-md-10 col-xs-12 col-md-offset-1">
+        <header class="b-detail__head s-lineDownLeft wow zoomInUp" data-wow-delay="0.5s">
+          <div class="b-detail__head-title">
+            <h1>{{ title }}</h1>
+            <h3>{{ hero.detail.make.name }} {{ hero.detail.model.name }} vs. {{ villain.detail.make.name }} {{ villain.detail.model.name }}</h3>
+          </div>
+        </header>
+      </div>
+    </div>
+
     <section id="matchup-detail" class="row">
       <div class="col-md-5 col-xs-6 col-md-offset-1">
         <div class="b-compare__images-item wow zoomInUp" data-wow-delay="0.3s">
@@ -24,18 +36,7 @@
         </div>
       </div>
     </section>
-
-    <div class="row">
-      <div class="col-md-10 col-xs-12 col-md-offset-1">
-        <header class="b-detail__head s-lineDownLeft wow zoomInUp" data-wow-delay="0.5s">
-          <div class="b-detail__head-title">
-            <h1>{{ title }}</h1>
-            <h3>{{ hero.detail.make.name }} {{ hero.detail.model.name }} vs. {{ villain.detail.make.name }} {{ villain.detail.model.name }}</h3>
-          </div>
-        </header>
-      </div>
-    </div>
-
+    
     <div class="b-detail__main">
       <div class="row">
         <div class="col-md-10 col-xs-12 col-md-offset-1">
