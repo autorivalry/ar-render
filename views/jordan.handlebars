@@ -6,29 +6,47 @@
     </div>
   </div>
 </section> -->
-
-<section class="b-detail s-shadow">
-  <div class="container">
-
-
-    <div class="row">
-      <div class="col-md-10 col-xs-12 col-md-offset-1">
-        <header class="b-detail__head s-lineDownLeft wow zoomInUp" data-wow-delay="0.5s">
-          <div class="b-detail__head-title">
-            <h1>{{ title }}</h1>
-            <h3>{{ hero.detail.make.name }} {{ hero.detail.model.name }} vs. {{ villain.detail.make.name }} {{ villain.detail.model.name }}</h3>
-          </div>
-        </header>
+  <header>
+    <div class="row content-section">
+      <div class="col-third">
+        <img src="http://placehold.it/300x100" alt="">
+      </div>
+      <div class="col-md-8 col-xs-12">
+        <h1>
+        {{ title }}<br>
+          <span class="subhead">{{ hero.detail.make.name }} {{ hero.detail.model.name }} vs. {{ villain.detail.make.name }} {{ villain.detail.model.name }}</span>
+        </h1>
       </div>
     </div>
 
-    <section id="matchup-detail" class="row">
-      <div class="col-md-5 col-xs-6 col-md-offset-1">
+
+    <div class="header__vehicles header__hero">
+      <div class="row--half align-center">
+        <h2 class="header__vehicles--make">{{ hero.detail.make.name }} </h2>
+        <h2 class="header__vehicles--model">{{ hero.detail.model.name }}</h2>
+      </div>
+    </div>
+    <div class="header-vs__container">
+      <div class="header-vs">
+          VS
+      </div>
+    </div>
+    <div class="header__vehicles header__villain">
+      <div class="row--half align-center">
+        <h2 class="header__vehicles--make">{{ villain.detail.make.name }} </h2>
+        <h2 class="header__vehicles--model">{{ villain.detail.model.name }}</h2>
+      </div>
+    </div>
+
+
+    {{!-- images --}}
+    {{!--   <div class="col-md-5 col-xs-6 col-md-offset-1">
+      </div>
         <div class="b-compare__images-item wow zoomInUp" data-wow-delay="0.3s">
           {{#if hero.image_url }}
             <img class="img-responsive center-block" src="{{ hero.image_url }}" alt="jaguar" />
           {{/if}}
-          <div class="b-compare__images-item-price m-right"><div class="b-compare__images-item-price-vs">vs</div>{{ hero.detail.make.name }} {{ hero.detail.model.name }}</div>
+          
         </div>
       </div>
       <div class="col-md-5 col-xs-6">
@@ -36,63 +54,89 @@
           {{#if villain.image_url}}
             <img class="img-responsive center-block" src="{{ villain.image_url }}" alt="merc" />
           {{/if }}
-          <div class="b-compare__images-item-price m-left">{{ villain.detail.make.name }} {{ villain.detail.model.name }}</div>
+          
         </div>
       </div>
-    </section>
+ --}}</header>
 
-    <div class="b-detail__main">
-      <div class="row">
-        <div class="col-md-10 col-xs-12 col-md-offset-1">
-          <div class="b-detail__main-info">
-            <div class="b-detail__main-info-text wow zoomInUp" data-wow-delay="0.5s">
-              <div class="b-detail__main-aside-about-form-links">
-                <a href="#" class="j-tab m-active s-lineDownCenter" data-to='#article'>Head to Head</a>
-                {{#if hero.edmunds_ratings }}
-                  <a href="#" class="j-tab" data-to='#info2'>Professional Reviews</a>
-                {{/if }}
-                <a href="#" class="j-tab" data-to='#info3'>Consumer Reviews</a>
-                <a href="#" class="j-tab" data-to='#info4'>General Specs</a>
-              </div>
-              <div id="article">
-                <h2>Head to Head Comparison</h2>
-                {{{ article }}}
-              </div>
+{{!-- comparison --}}
+{{!-- <div class="b-detail__main">
+<div class="row">
+<div class="col-md-10 col-xs-12 col-md-offset-1">
+<div class="b-detail__main-info">
+<div class="b-detail__main-info-text wow zoomInUp" data-wow-delay="0.5s"> --}}
+  <div class="row header__tabs">
+    <div class="col-quarter col-quarter--tablet align-center">
+      <a href="#" class="j-tab m-active s-lineDownCenter" data-to='#article'>Head to Head</a>
+    </div>
+    {{#if hero.edmunds_ratings }}
+    <div class="col-quarter col-quarter--tablet align-center">
+      <a href="#" class="j-tab" data-to='#info2'>Professional Reviews</a>
+    </div>
+    {{/if }}
+    <div class="col-quarter col-quarter--tablet align-center">
+      <a href="#" class="j-tab" data-to='#info3'>Consumer Reviews</a>
+    </div>
+    <div class="col-quarter col-quarter--tablet align-center">
+      <a href="#" class="j-tab" data-to='#info4'>General Specs</a>
+    </div>
+  </div>
 
-              <div id="info2">
-                <h2>Professional Reviews from Edmunds.com</h2>
-                <p>
-                  {{ hero.edmunds_ratings.summary }}
-                </p>
+  <div class="main-banner"> 
+    {{#if hero.image_url }}
+      <div class="row--half" style="background: url('{{ hero.image_url }}') no-repeat center center;">
+        <div class="main-banner--hero main-banner--image">
+        </div>
+      </div>
+    {{/if}}
+    {{#if villain.image_url}}
+      <div class="row--half" style="background: url('{{ villain.image_url }}') no-repeat center center;">
+        <div class="main-banner--villain main-banner--image">
+        </div>
+      </div>
+     {{/if}}
+  </div>
 
-                {{#each hero.edmunds_ratings.ratings as |heroRating|}}
-                  {{#if heroRating.include }}
+  <div id="article" class="col-full content-section">
+    <h2>Head to Head Comparison</h2>
+    {{{ article }}}
+  </div>
 
-                    <div class="b-compare__block wow zoomInUp" data-wow-delay="0.3s">
+  <div id="info2" class="col-full content-section">
+    <h2>Professional Reviews from Edmunds.com</h2>
+    <p>
+      {{ hero.edmunds_ratings.summary }}
+    </p>
+  </div>
 
-                      <div class="b-compare__block-title s-whiteShadow m-active">
-                        <h3 class="s-titleDet">{{ this.title }}</h3>
-                        <a class="j-more" href="#"><span class="fa fa-angle-left"></span></a>
-                      </div>
+{{#each hero.edmunds_ratings.ratings as |heroRating|}}
+{{#if heroRating.include }}
 
-                      <div class="b-compare__block-inside j-inside m-active">
-                        <div class="row">
-                          <div class="col-xs-12">
-                            {{#if heroRating.hero_summary }}
-                              <p>
-                                {{ heroRating.summary }}
-                              </p>
-                            {{/if }}
-                            {{#if heroRating.villain_summary }}
-                              <p>
-                                {{#with (lookup ../../../villain.edmunds_ratings.ratings @index) }}
-                                  {{ summary }}
-                                {{/with }}
-                              </p>
-                            {{/if }}
-                          </div>
-                        </div>
-                      </div><!-- .b-compare__block-inside -->
+<div class="b-compare__block wow zoomInUp" data-wow-delay="0.3s">
+
+  <div class="b-compare__block-title s-whiteShadow m-active">
+    <h3 class="s-titleDet">{{ this.title }}</h3>
+    <a class="j-more" href="#"><span class="fa fa-angle-left"></span></a>
+  </div>
+
+  <div class="b-compare__block-inside j-inside m-active">
+  <div class="row">
+  <div class="col-xs-12">
+  {{#if heroRating.hero_summary }}
+  <p>
+    {{ heroRating.summary }}
+  </p>
+  {{/if }}
+  {{#if heroRating.villain_summary }}
+  <p>
+    {{#with (lookup ../../../villain.edmunds_ratings.ratings @index) }}
+      {{ summary }}
+    {{/with }}
+  </p>
+  {{/if }}
+  </div>
+  </div>
+  </div><!-- .b-compare__block-inside -->
 
                       <div class="b-compare__block-inside j-inside m-active">
                         <div class="row">
@@ -191,7 +235,7 @@
                 {{/each }}
               </div><!-- #info2 -->
 
-              <div id="info3">
+              <div id="info3" class="col-full content-section">
                 <div class="row">
                   <div class="col-xs-12">
                     <h2>{{ hero.detail.make.name }} {{ hero.detail.model.name }} Consumer Reviews: </h2>
@@ -272,7 +316,7 @@
     						</div><!-- .b-items__cars -->
               </div>
 
-              <div id="info4">
+              <div id="info4" class="col-full content-section">
                 <h2>General Specs & Information</h2>
                 <div class="b-compare__block wow zoomInUp" data-wow-delay="0.3s">
                   <div class="b-compare__block-title s-whiteShadow m-active">

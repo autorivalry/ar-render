@@ -79,11 +79,11 @@ body{
     z-index: 1000;
 }
 
-.s-lineDownLeft{
-    text-align: left;
-    border-bottom: 1px solid #B4B4B4;
-    position: relative;
-}
+// .s-lineDownLeft{
+//     text-align: left;
+//     border-bottom: 1px solid #B4B4B4;
+//     position: relative;
+// }
 
 .s-lineDownLeft:after{
     background: url(../images/elements/chevron-down.png) center no-repeat;
@@ -98,7 +98,6 @@ body{
 
 .s-lineDownCenter{
     text-align: center;
-    border-bottom: 1px solid #B4B4B4!important;
     position: relative;
 }
 

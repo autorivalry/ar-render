@@ -43,28 +43,33 @@
 }
 
 /* Detail */
-.b-detail{
-    padding: 70px 0 110px 0;
-}
+// .b-detail{
+//     padding: 70px 0 110px 0;
+// }
 
 .b-detail__head{
     padding: 0 0 30px 0;
     margin-bottom: 60px;
 }
 
-.b-detail__head-title{
-    border-left:4px solid #f76d2b;
-    padding-left: 15px;
-}
+// .b-detail__head-title{
+//     border-left:4px solid #f76d2b;
+//     padding-left: 15px;
+// }
 
 .b-detail__head h1{
     font: 700 30px 'PT Sans',sans-serif;
-    margin:0;
+    margin:20px;
+    text-align: center;
 }
 
 .b-detail__head h3{
     font: 400 14px 'Open Sans',sans-serif;
-    margin: 0;
+    font-size: 20px;
+    line-height: 25px;
+    margin-top: 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
 }
 
 .b-detail__head-price{
