@@ -102,195 +102,124 @@
     {{{ article }}}
   </div>
 
-  <div id="info2" class="col-full content-section">
+    <div id="info2" class="col-full content-section">
     <h2>Professional Reviews from Edmunds.com</h2>
     <p>
-      {{ hero.edmunds_ratings.summary }}
+        {{ hero.edmunds_ratings.summary }}
     </p>
-  </div>
-
-{{#each hero.edmunds_ratings.ratings as |heroRating|}}
-{{#if heroRating.include }}
-
-{{!-- <div class="b-compare__block wow zoomInUp" data-wow-delay="0.3s"> --}}
-
-  {{!-- <div class="b-compare__block-title s-whiteShadow m-active">
-    <h3 class="s-titleDet">{{ this.title }}</h3>
-    <a class="j-more" href="#"><span class="fa fa-angle-left"></span></a>
-  </div>
-
-  <div class="b-compare__block-inside j-inside m-active">
-  <div class="row">
-  <div class="col-xs-12">
-  {{#if heroRating.hero_summary }}
-  <p>
-    {{ heroRating.summary }}
-  </p>
-  {{/if }}
-  {{#if heroRating.villain_summary }}
-  <p>
-    {{#with (lookup ../../../villain.edmunds_ratings.ratings @index) }}
-      {{ summary }}
-    {{/with }}
-  </p>
-  {{/if }}
-  </div>
-  </div>
-  </div> --}}<!-- .b-compare__block-inside -->
-
+    {{!-- </div> --}} {{#each hero.edmunds_ratings.ratings as |heroRating|}} {{#if heroRating.include }}
+<div class="b-compare__block wow zoomInUp" data-wow-delay="0.3s">
+    <div class="b-compare__block-title s-whiteShadow m-active">
+        <h3 class="s-titleDet">{{ this.title }}</h3>
+        <a class="j-more" href="#"><span class="fa fa-angle-left"></span></a>
+    </div>
     <div class="b-compare__block-inside j-inside m-active">
-      <div class="row">
-        <div class="col-xs-4">
-          <div class="b-compare__block-inside-title">
-            Make / Year
-          </div>
-        </div>
-        <div class="col-xs-4">
-          <div class="b-compare__block-inside-value">
-            <strong>{{ ../../hero.detail.make.name }} {{ ../../hero.detail.model.name }}</strong>
-          </div>
-        </div>
-        <div class="col-xs-4">
-          <div class="b-compare__block-inside-value">
-            <strong>{{ ../../villain.detail.make.name }} {{ ../../villain.detail.model.name }}</strong>
-          </div>
-        </div>
-      </div><!-- .row -->
-    </div>
-
-  <div class="row">
-    <div class="col-xs-4">
-      <div class="b-compare__block-inside-title">
-        Overall Score
-      </div>
-    </div>
-    <div class="col-xs-4">
-      <div class="b-compare__block-inside-value">
-        {{#with (lookup ../../villain.edmunds_ratings.ratings @index) }}
-          {{#is heroRating.score '>' score }}
-            <strong class="text-success">{{ heroRating.score }}</strong>
-            <i class="fa fa-check-circle-o text-success"></i>
-          {{else }}
-            <strong>{{ heroRating.score }}</strong>
-          {{/is }}
-        {{/with}}
-      </div>
-    </div>
-    <div class="col-xs-4">
-      <div class="b-compare__block-inside-value">
-        {{#with (lookup ../../villain.edmunds_ratings.ratings @index) }}
-          {{#is heroRating.score '>' score }}
-            <strong class="text-danger">{{ score }}</strong>
-            <i class="fa fa-times-circle-o text-danger"></i>
-          {{else }}
-            <strong>{{ score }}</strong>
-          {{/is }}
-        {{/with}}
-      </div>
-    </div>
-  </div><!-- .row -->
-
-      {{#each heroRating.subRatings as |heroSubRating|}}
         <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              {{ heroSubRating.title }}
+            <div class="col-xs-12">
+                {{#if heroRating.hero_summary }}
+                <p>
+                    {{ heroRating.summary }}
+                </p>
+                {{/if }} {{#if heroRating.villain_summary }}
+                <p>
+                    {{#with (lookup ../../../villain.edmunds_ratings.ratings @index) }} {{ summary }} {{/with }}
+                </p>
+                {{/if }}
             </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{#with (lookup ../../../villain.edmunds_ratings.ratings @../index) }}
-                {{#with (lookup subRatings @index) }}
-                  {{#is heroSubRating.score '>' score }}
-                    <strong class="text-success">{{ heroSubRating.score }}</strong>
-                    <i class="fa fa-check-circle-o text-success"></i>
-                  {{else }}
-                    {{ heroSubRating.score }}
-                  {{/is }}
-                {{/with }}
-              {{/with }}
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{#with (lookup ../../../villain.edmunds_ratings.ratings @../index) }}
-                {{#with (lookup subRatings @index) }}
-                  {{#is heroSubRating.score '>' score }}
-                    <strong class="text-danger">{{ score }}</strong>
-                    <i class="fa fa-times-circle-o text-danger"></i>
-                  {{else }}
-                    {{ score }}
-                  {{/is }}
-                {{/with }}
-              {{/with }}
-            </div>
-          </div>
-        </div><!-- .row -->
-      {{/each }}
-
-   {{!--  </div><!-- .b-compare__block-inside -->
-
-  </div><!-- .b-compare__block --> --}}
-
-{{/if }}
-{{/each }}
-</div><!-- #info2 -->
-
-<div id="info3" class="col-full content-section">
-  <div class="col-xs-12">
-    <h2>{{ hero.detail.make.name }} {{ hero.detail.model.name }} Consumer Reviews: </h2>
-    <p class="lead">
-      Selected visitor reviews of this vehicle posted on <a href="http://www.edmunds.com/" alt="Edmunds.com">Edmunds.com</a>:
-    </p>
-    <div class="b-items__cars">
-  {{#each hero.reviews.reviews }}
-    {{#if this.include }}
-      <div class="b-items__cars-one wow zoomInUp" data-wow-delay="0.5s">
-        <div class="b-items__cars-one-info" style="margin: 15px;">
-          <header class="b-items__cars-one-info-header s-lineDownLeft">
-            <h2>{{ this.title }}</h2>
-            <span>
-              {{#repeat this.userRating }}
-                <i class="fa fa-star"></i>
-              {{/repeat}}
-            </span>
-          </header>
-          <p>
-            {{ this.text }}
-          </p>
-          <div class="b-items__cars-one-info-km">
-            <span class="fa fa-pencil"></span> Written by {{ this.author.authorName }} <!-- on Review Date -->
-          </div>
-          <!-- <div class="b-items__cars-one-info-details">
-            <div class="b-featured__item-links">
-              <a href="#">Registered 2015</a>
-              <a href="#">Used</a>
-              <a href="#">8-Speed Automatic</a>
-              <a href="#">Petrol</a>
-            </div>
-          </div> -->
         </div>
-      </div>
-    {{/if }}
-  {{/each }}
+    </div>
+    <!-- .b-compare__block-inside -->
+    <div class="b-compare__block-inside j-inside m-active">
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="b-compare__block-inside-title">
+                    Make / Year
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="b-compare__block-inside-value">
+                    <strong>{{ ../../hero.detail.make.name }} {{ ../../hero.detail.model.name }}</strong>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="b-compare__block-inside-value">
+                    <strong>{{ ../../villain.detail.make.name }} {{ ../../villain.detail.model.name }}</strong>
+                </div>
+            </div>
+        </div>
+        <!-- .row -->
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="b-compare__block-inside-title">
+                    Overall Score
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="b-compare__block-inside-value">
+                    {{#with (lookup ../../villain.edmunds_ratings.ratings @index) }} {{#is heroRating.score '>' score }}
+                    <strong class="text-success">{{ heroRating.score }}</strong>
+                    <i class="fa fa-check-circle-o text-success"></i> {{else }}
+                    <strong>{{ heroRating.score }}</strong> {{/is }} {{/with}}
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="b-compare__block-inside-value">
+                    {{#with (lookup ../../villain.edmunds_ratings.ratings @index) }} {{#is heroRating.score '>' score }}
+                    <strong class="text-danger">{{ score }}</strong>
+                    <i class="fa fa-times-circle-o text-danger"></i> {{else }}
+                    <strong>{{ score }}</strong> {{/is }} {{/with}}
+                </div>
+            </div>
+        </div>
+        <!-- .row -->
+        {{#each heroRating.subRatings as |heroSubRating|}}
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="b-compare__block-inside-title">
+                    {{ heroSubRating.title }}
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="b-compare__block-inside-value">
+                    {{#with (lookup ../../../villain.edmunds_ratings.ratings @../index) }} {{#with (lookup subRatings @index) }} {{#is heroSubRating.score '>' score }}
+                    <strong class="text-success">{{ heroSubRating.score }}</strong>
+                    <i class="fa fa-check-circle-o text-success"></i> {{else }} {{ heroSubRating.score }} {{/is }} {{/with }} {{/with }}
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="b-compare__block-inside-value">
+                    {{#with (lookup ../../../villain.edmunds_ratings.ratings @../index) }} {{#with (lookup subRatings @index) }} {{#is heroSubRating.score '>' score }}
+                    <strong class="text-danger">{{ score }}</strong>
+                    <i class="fa fa-times-circle-o text-danger"></i> {{else }} {{ score }} {{/is }} {{/with }} {{/with }}
+                </div>
+            </div>
+        </div>
+        <!-- .row -->
+        {{/each }}
+    </div>
+    <!-- .b-compare__block-inside -->
 </div>
-  </div>
+<!-- .b-compare__block -->
+{{/if }} {{/each }}
 </div>
-<!-- .b-items__cars -->
+<!-- #info2 -->
 
-               {{!--  <div class="row">
+              <div id="info3" class="col-full content-section">
                   <div class="col-xs-12">
-                    <h2>{{ villain.detail.make.name }} {{ villain.detail.model.name }} Consumer Reviews: </h2>
+                    <h2>{{ hero.detail.make.name }} {{ hero.detail.model.name }} Consumer Reviews: </h2>
+                    <p class="lead">
+                      Selected visitor reviews of this vehicle posted on <a href="http://www.edmunds.com/" alt="Edmunds.com">Edmunds.com</a>:
+                    </p>
                   </div>
-                </div> --}}
-                {{!-- <div class="b-items__cars">
-                  {{#each villain.reviews.reviews }}
+
+                <div class="b-items__cars">
+                  {{#each hero.reviews.reviews }}
                     {{#if this.include }}
         							<div class="b-items__cars-one wow zoomInUp" data-wow-delay="0.5s">
         								<div class="b-items__cars-one-info" style="margin: 15px;">
         									<header class="b-items__cars-one-info-header s-lineDownLeft">
-        										<h2 style="border-color: red;">{{ this.title }}</h2>
-        										<span style="background-color: red;">
+        										<h2>{{ this.title }}</h2>
+        										<span>
                               {{#repeat this.userRating }}
                                 <i class="fa fa-star"></i>
                               {{/repeat}}
@@ -314,454 +243,493 @@
         							</div>
                     {{/if }}
                   {{/each }}
-    						</div><!-- .b-items__cars --> --}}
-{{!--               </div> --}}
+    						</div><!-- .b-items__cars -->
 
-<div id="info4" class="col-full content-section">
-  <h2>General Specs & Information</h2>
-  <div class="b-compare__block wow zoomInUp" data-wow-delay="0.3s">
-    <div class="b-compare__block-title s-whiteShadow m-active">
-      <h3 class="s-titleDet">ENGINE</h3>
-      <a class="j-more" href="#"><span class="fa fa-angle-left"></span></a>
-    </div>
-    <div class="b-compare__block-inside j-inside m-active">
-      {{!-- start: Make / Year --}}
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              Make / Year
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              <strong>{{ hero.detail.make.name }} {{ hero.detail.model.name }}</strong>
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              <strong>{{ villain.detail.make.name }} {{ villain.detail.model.name }}</strong>
-            </div>
-          </div>
-        </div><!-- Make / Year -->
-      {{!-- end: Make / Year --}}
-      {{#if hero.detail.engine.include_cylinder }}
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              Number of Cylinders
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ hero.detail.engine.cylinder }}
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ villain.detail.engine.cylinder }}
-            </div>
-          </div>
-        </div><!-- Number of Cylinders -->
-      {{/if }}
-      {{#if hero.detail.engine.include_displacement }}
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              Displacement
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ hero.detail.engine.displacement }} ml
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ villain.detail.engine.displacement }} ml
-            </div>
-          </div>
-        </div><!-- Number of Cylinders -->
-      {{/if }}
-      {{#if hero.detail.engine.include_horsepower }}
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              Horsepower
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{#is hero.detail.engine.horsepower '>' villain.detail.engine.horsepower }}
-                <strong class="text-success">{{ hero.detail.engine.horsepower }} hp</strong>
-                <i class="fa fa-check-circle-o text-success"></i>
-              {{else }}
-                {{ hero.detail.engine.horsepower }} hp
-              {{/is }}
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{#is hero.detail.engine.horsepower '>' villain.detail.engine.horsepower }}
-                <strong class="text-danger">{{ villain.detail.engine.horsepower }} hp</strong>
-                <i class="fa fa-times-circle-o text-danger"></i>
-              {{else }}
-                {{ villain.detail.engine.horsepower }} hp
-              {{/is }}
-            </div>
-          </div>
-        </div><!-- Horsepower -->
-      {{/if }}
-      {{#if hero.detail.engine.include_torque }}
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              Torque
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{#is hero.detail.engine.torque '>' villain.detail.engine.torque }}
-                <strong class="text-success">{{ hero.detail.engine.torque }} lbft</strong>
-                <i class="fa fa-check-circle-o text-success"></i>
-              {{else }}
-                {{ hero.detail.engine.torque }} lbft
-              {{/is }}
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{#is hero.detail.engine.torque '>' villain.detail.engine.torque }}
-                <strong class="text-danger">{{ villain.detail.engine.torque }} lbft</strong>
-                <i class="fa fa-times-circle-o text-danger"></i>
-              {{else }}
-                {{ villain.detail.engine.torque }} lbft
-              {{/is }}
-            </div>
-          </div>
-        </div><!-- Torque -->
-      {{/if }}
-      {{#if hero.detail.MPG.include_city_mpg }}
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              City MPG
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{#is hero.detail.MPG.city '>' villain.detail.MPG.city }}
-                <strong class="text-success">{{ hero.detail.MPG.city }} mpg</strong>
-                <i class="fa fa-check-circle-o text-success"></i>
-              {{else }}
-                {{ hero.detail.MPG.city }} mpg
-              {{/is }}
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{#is hero.detail.MPG.city '>' villain.detail.MPG.city }}
-                <strong class="text-danger">{{ villain.detail.MPG.city }} mpg</strong>
-                <i class="fa fa-times-circle-o text-danger"></i>
-              {{else }}
-                {{ villain.detail.MPG.city }} mpg
-              {{/is }}
-            </div>
-          </div>
-        </div><!-- City MPG -->
-      {{/if }}
-      {{#if hero.detail.MPG.include_highway_mpg }}
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              Highway MPG
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{#is hero.detail.MPG.highway '>' villain.detail.MPG.highway }}
-                <strong class="text-success">{{ hero.detail.MPG.highway }} mpg</strong>
-                <i class="fa fa-check-circle-o text-success"></i>
-              {{else }}
-                {{ hero.detail.MPG.highway }} mpg
-              {{/is }}
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{#is hero.detail.MPG.highway '>' villain.detail.MPG.highway }}
-                <strong class="text-danger">{{ villain.detail.MPG.highway }} mpg</strong>
-                <i class="fa fa-times-circle-o text-danger"></i>
-              {{else }}
-                {{ villain.detail.MPG.highway }} mpg
-              {{/is }}
-            </div>
-          </div>
-        </div><!-- Highway MPG -->
-      {{/if }}
-      {{#if engine.include_fuel_type }}
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              Fuel Type
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ hero.detail.engine.fuelType }}
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ villain.detail.engine.fuelType }}
-            </div>
-          </div>
-        </div><!-- Fuel Type -->
-      {{/if }}
-      {{#if engine.include_compression }}
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              Compression Ratio
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ hero.detail.engine.compressionRatio }}
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ villain.detail.engine.compressionRatio }}
-            </div>
-          </div>
-        </div><!-- Compression Ratio -->
-      {{/if }}
-    </div>
-  </div><!-- .b-compare__block -->
-  <div class="b-compare__block wow zoomInUp" data-wow-delay="0.3s">
-    <div class="b-compare__block-title s-whiteShadow m-active">
-      <h3 class="s-titleDet">TRANSMISSION</h3>
-      <a class="j-more" href="#"><span class="fa fa-angle-left"></span></a>
-    </div>
-    <div class="b-compare__block-inside j-inside m-active">
-      {{!-- start: Make / Year --}}
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              Make / Model
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              <strong>{{ hero.detail.make.name }} {{ hero.detail.model.name }}</strong>
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              <strong>{{ villain.detail.make.name }} {{ villain.detail.model.name }}</strong>
-            </div>
-          </div>
-        </div><!-- Make / Year -->
-      {{!-- end: Make / Year --}}
-      {{#if hero.detail.transmission.include_drive }}
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              Drive Type
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ hero.detail.drivenWheels }}
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ villain.detail.drivenWheels }}
-            </div>
-          </div>
-        </div><!-- Drive Type -->
-      {{/if }}
-      {{#if hero.detail.transmission.include_speeds }}
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              Number of Speeds
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{#is hero.detail.transmission.numberOfSpeeds '>' villain.detail.transmission.numberOfSpeeds }}
-                <strong class="text-success">{{ hero.detail.transmission.numberOfSpeeds }}</strong>
-                <i class="fa fa-check-circle-o text-success"></i>
-              {{else }}
-                {{ hero.detail.transmission.numberOfSpeeds }}
-              {{/is }}
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{#is hero.detail.transmission.numberOfSpeeds '>' villain.detail.transmission.numberOfSpeeds }}
-                <strong class="text-danger">{{ villain.detail.transmission.numberOfSpeeds }}</strong>
-                <i class="fa fa-times-circle-o text-danger"></i>
-              {{else }}
-                {{ villain.detail.transmission.numberOfSpeeds }}
-              {{/is }}
-            </div>
-          </div>
-        </div><!-- Number of Speeds -->
-      {{/if }}
-      {{#if hero.detail.transmission.include_type }}
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              Transmission Type
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ hero.detail.transmission.transmissionType }}
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ villain.detail.transmission.transmissionType }}
-            </div>
-          </div>
-        </div><!-- Transmission Type -->
-      {{/if }}
-    </div>
-  </div><!-- .b-compare__block -->
-  <div class="b-compare__block wow zoomInUp" data-wow-delay="0.3s">
-    <div class="b-compare__block-title s-whiteShadow m-active">
-      <h3 class="s-titleDet">BODY</h3>
-      <a class="j-more" href="#"><span class="fa fa-angle-left"></span></a>
-    </div>
-    <div class="b-compare__block-inside j-inside m-active">
-      {{!-- start: Make / Model --}}
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              Make / Model
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              <strong>{{ hero.detail.make.name }} {{ hero.detail.model.name }}</strong>
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              <strong>{{ villain.detail.make.name }} {{ villain.detail.model.name }}</strong>
-            </div>
-          </div>
-        </div><!-- .row -->
-      {{!-- end: Make / Model --}}
-      {{#if hero.detail.include_doors }}
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              Number of Doors
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ hero.detail.numOfDoors }}
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ villain.detail.numOfDoors }}
-            </div>
-          </div>
-        </div><!-- .row -->
-      {{/if }}
-      {{#if hero.detail.categories.include_epa }}
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              EPA Class
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ hero.detail.categories.EPAClass }}
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ villain.detail.categories.EPAClass }}
-            </div>
-          </div>
-        </div><!-- .row -->
-      {{/if }}
-      {{#if hero.detail.categories.include_type }}
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              Body Type
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ hero.detail.categories.vehicleType }}
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ villain.detail.categories.vehicleType }}
-            </div>
-          </div>
-        </div><!-- .row -->
-      {{/if }}
-      {{#if hero.detail.categories.include_size }}
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              Vehicle Size
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ hero.detail.categories.vehicleSize }}
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ villain.detail.categories.vehicleSize }}
-            </div>
-          </div>
-        </div><!-- .row -->
-      {{/if }}
-      {{#if categories.include_style }}
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-title">
-              Vehicle Style
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ hero.detail.categories.vehicleStyle }}
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="b-compare__block-inside-value">
-              {{ villain.detail.categories.vehicleStyle }}
-            </div>
-          </div>
-        </div><!-- .row -->
-      {{/if }}
-    </div>
-  </div><!-- .b-compare__block -->
-{{!-- </div> --}}<!-- #stats -->
+                <div class="row">
+                  <div class="col-xs-12">
+                    <h2>{{ villain.detail.make.name }} {{ villain.detail.model.name }} Consumer Reviews: </h2>
+                  </div>
+                </div>
+                <div class="b-items__cars">
+                  {{#each villain.reviews.reviews }}
+                    {{#if this.include }}
+        							<div class="b-items__cars-one wow zoomInUp" data-wow-delay="0.5s">
+        								<div class="b-items__cars-one-info" style="margin: 15px;">
+        									<header class="b-items__cars-one-info-header s-lineDownLeft">
+        										<h2 style="border-color: red;">{{ this.title }}</h2>
+        										<span style="background-color: red;">
+                              {{#repeat this.userRating }}
+                                <i class="fa fa-star"></i>
+                              {{/repeat}}
+                            </span>
+        									</header>
+        									<p>
+        										{{ this.text }}
+        									</p>
+                          <div class="b-items__cars-one-info-km">
+                            <span class="fa fa-pencil"></span> Written by {{ this.author.authorName }} <!-- on Review Date -->
+                          </div>
+        									<div class="b-items__cars-one-info-details">
+        										<div class="b-featured__item-links">
+        											<a href="#">Registered 2015</a>
+        											<a href="#">Used</a>
+        											<a href="#">8-Speed Automatic</a>
+        											<a href="#">Petrol</a>
+        										</div>
+        									</div>
+        								</div>
+        							</div>
+                    {{/if }}
+                  {{/each }}
+    						</div><!-- .b-items__cars -->
+              </div>
 
-{{!-- </div>
-</div>
-</div>
-</div>
-</div>
-</div><!-- .container --> --}}
+              <div id="info4" class="col-full content-section">
+                <h2>General Specs & Information</h2>
+                <div class="b-compare__block wow zoomInUp" data-wow-delay="0.3s">
+                  <div class="b-compare__block-title s-whiteShadow m-active">
+                    <h3 class="s-titleDet">ENGINE</h3>
+                    <a class="j-more" href="#"><span class="fa fa-angle-left"></span></a>
+                  </div>
+                  <div class="b-compare__block-inside j-inside m-active">
+                    {{!-- start: Make / Year --}}
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-title">
+                            Make / Year
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            <strong>{{ hero.detail.make.name }} {{ hero.detail.model.name }}</strong>
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            <strong>{{ villain.detail.make.name }} {{ villain.detail.model.name }}</strong>
+                          </div>
+                        </div>
+                      </div><!-- Make / Year -->
+                    {{!-- end: Make / Year --}}
+                    {{#if hero.detail.engine.include_cylinder }}
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-title">
+                            Number of Cylinders
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ hero.detail.engine.cylinder }}
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ villain.detail.engine.cylinder }}
+                          </div>
+                        </div>
+                      </div><!-- Number of Cylinders -->
+                    {{/if }}
+                    {{#if hero.detail.engine.include_displacement }}
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-title">
+                            Displacement
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ hero.detail.engine.displacement }} ml
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ villain.detail.engine.displacement }} ml
+                          </div>
+                        </div>
+                      </div><!-- Number of Cylinders -->
+                    {{/if }}
+                    {{#if hero.detail.engine.include_horsepower }}
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-title">
+                            Horsepower
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{#is hero.detail.engine.horsepower '>' villain.detail.engine.horsepower }}
+                              <strong class="text-success">{{ hero.detail.engine.horsepower }} hp</strong>
+                              <i class="fa fa-check-circle-o text-success"></i>
+                            {{else }}
+                              {{ hero.detail.engine.horsepower }} hp
+                            {{/is }}
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{#is hero.detail.engine.horsepower '>' villain.detail.engine.horsepower }}
+                              <strong class="text-danger">{{ villain.detail.engine.horsepower }} hp</strong>
+                              <i class="fa fa-times-circle-o text-danger"></i>
+                            {{else }}
+                              {{ villain.detail.engine.horsepower }} hp
+                            {{/is }}
+                          </div>
+                        </div>
+                      </div><!-- Horsepower -->
+                    {{/if }}
+                    {{#if hero.detail.engine.include_torque }}
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-title">
+                            Torque
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{#is hero.detail.engine.torque '>' villain.detail.engine.torque }}
+                              <strong class="text-success">{{ hero.detail.engine.torque }} lbft</strong>
+                              <i class="fa fa-check-circle-o text-success"></i>
+                            {{else }}
+                              {{ hero.detail.engine.torque }} lbft
+                            {{/is }}
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{#is hero.detail.engine.torque '>' villain.detail.engine.torque }}
+                              <strong class="text-danger">{{ villain.detail.engine.torque }} lbft</strong>
+                              <i class="fa fa-times-circle-o text-danger"></i>
+                            {{else }}
+                              {{ villain.detail.engine.torque }} lbft
+                            {{/is }}
+                          </div>
+                        </div>
+                      </div><!-- Torque -->
+                    {{/if }}
+                    {{#if hero.detail.MPG.include_city_mpg }}
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-title">
+                            City MPG
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{#is hero.detail.MPG.city '>' villain.detail.MPG.city }}
+                              <strong class="text-success">{{ hero.detail.MPG.city }} mpg</strong>
+                              <i class="fa fa-check-circle-o text-success"></i>
+                            {{else }}
+                              {{ hero.detail.MPG.city }} mpg
+                            {{/is }}
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{#is hero.detail.MPG.city '>' villain.detail.MPG.city }}
+                              <strong class="text-danger">{{ villain.detail.MPG.city }} mpg</strong>
+                              <i class="fa fa-times-circle-o text-danger"></i>
+                            {{else }}
+                              {{ villain.detail.MPG.city }} mpg
+                            {{/is }}
+                          </div>
+                        </div>
+                      </div><!-- City MPG -->
+                    {{/if }}
+                    {{#if hero.detail.MPG.include_highway_mpg }}
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-title">
+                            Highway MPG
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{#is hero.detail.MPG.highway '>' villain.detail.MPG.highway }}
+                              <strong class="text-success">{{ hero.detail.MPG.highway }} mpg</strong>
+                              <i class="fa fa-check-circle-o text-success"></i>
+                            {{else }}
+                              {{ hero.detail.MPG.highway }} mpg
+                            {{/is }}
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{#is hero.detail.MPG.highway '>' villain.detail.MPG.highway }}
+                              <strong class="text-danger">{{ villain.detail.MPG.highway }} mpg</strong>
+                              <i class="fa fa-times-circle-o text-danger"></i>
+                            {{else }}
+                              {{ villain.detail.MPG.highway }} mpg
+                            {{/is }}
+                          </div>
+                        </div>
+                      </div><!-- Highway MPG -->
+                    {{/if }}
+                    {{#if engine.include_fuel_type }}
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-title">
+                            Fuel Type
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ hero.detail.engine.fuelType }}
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ villain.detail.engine.fuelType }}
+                          </div>
+                        </div>
+                      </div><!-- Fuel Type -->
+                    {{/if }}
+                    {{#if engine.include_compression }}
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-title">
+                            Compression Ratio
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ hero.detail.engine.compressionRatio }}
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ villain.detail.engine.compressionRatio }}
+                          </div>
+                        </div>
+                      </div><!-- Compression Ratio -->
+                    {{/if }}
+                  </div>
+                </div><!-- .b-compare__block -->
+                <div class="b-compare__block wow zoomInUp" data-wow-delay="0.3s">
+                  <div class="b-compare__block-title s-whiteShadow m-active">
+                    <h3 class="s-titleDet">TRANSMISSION</h3>
+                    <a class="j-more" href="#"><span class="fa fa-angle-left"></span></a>
+                  </div>
+                  <div class="b-compare__block-inside j-inside m-active">
+                    {{!-- start: Make / Year --}}
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-title">
+                            Make / Model
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            <strong>{{ hero.detail.make.name }} {{ hero.detail.model.name }}</strong>
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            <strong>{{ villain.detail.make.name }} {{ villain.detail.model.name }}</strong>
+                          </div>
+                        </div>
+                      </div><!-- Make / Year -->
+                    {{!-- end: Make / Year --}}
+                    {{#if hero.detail.transmission.include_drive }}
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-title">
+                            Drive Type
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ hero.detail.drivenWheels }}
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ villain.detail.drivenWheels }}
+                          </div>
+                        </div>
+                      </div><!-- Drive Type -->
+                    {{/if }}
+                    {{#if hero.detail.transmission.include_speeds }}
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-title">
+                            Number of Speeds
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{#is hero.detail.transmission.numberOfSpeeds '>' villain.detail.transmission.numberOfSpeeds }}
+                              <strong class="text-success">{{ hero.detail.transmission.numberOfSpeeds }}</strong>
+                              <i class="fa fa-check-circle-o text-success"></i>
+                            {{else }}
+                              {{ hero.detail.transmission.numberOfSpeeds }}
+                            {{/is }}
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{#is hero.detail.transmission.numberOfSpeeds '>' villain.detail.transmission.numberOfSpeeds }}
+                              <strong class="text-danger">{{ villain.detail.transmission.numberOfSpeeds }}</strong>
+                              <i class="fa fa-times-circle-o text-danger"></i>
+                            {{else }}
+                              {{ villain.detail.transmission.numberOfSpeeds }}
+                            {{/is }}
+                          </div>
+                        </div>
+                      </div><!-- Number of Speeds -->
+                    {{/if }}
+                    {{#if hero.detail.transmission.include_type }}
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-title">
+                            Transmission Type
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ hero.detail.transmission.transmissionType }}
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ villain.detail.transmission.transmissionType }}
+                          </div>
+                        </div>
+                      </div><!-- Transmission Type -->
+                    {{/if }}
+                  </div>
+                </div><!-- .b-compare__block -->
+                <div class="b-compare__block wow zoomInUp" data-wow-delay="0.3s">
+                  <div class="b-compare__block-title s-whiteShadow m-active">
+                    <h3 class="s-titleDet">BODY</h3>
+                    <a class="j-more" href="#"><span class="fa fa-angle-left"></span></a>
+                  </div>
+                  <div class="b-compare__block-inside j-inside m-active">
+                    {{!-- start: Make / Model --}}
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-title">
+                            Make / Model
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            <strong>{{ hero.detail.make.name }} {{ hero.detail.model.name }}</strong>
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            <strong>{{ villain.detail.make.name }} {{ villain.detail.model.name }}</strong>
+                          </div>
+                        </div>
+                      </div><!-- .row -->
+                    {{!-- end: Make / Model --}}
+                    {{#if hero.detail.include_doors }}
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-title">
+                            Number of Doors
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ hero.detail.numOfDoors }}
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ villain.detail.numOfDoors }}
+                          </div>
+                        </div>
+                      </div><!-- .row -->
+                    {{/if }}
+                    {{#if hero.detail.categories.include_epa }}
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-title">
+                            EPA Class
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ hero.detail.categories.EPAClass }}
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ villain.detail.categories.EPAClass }}
+                          </div>
+                        </div>
+                      </div><!-- .row -->
+                    {{/if }}
+                    {{#if hero.detail.categories.include_type }}
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-title">
+                            Body Type
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ hero.detail.categories.vehicleType }}
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ villain.detail.categories.vehicleType }}
+                          </div>
+                        </div>
+                      </div><!-- .row -->
+                    {{/if }}
+                    {{#if hero.detail.categories.include_size }}
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-title">
+                            Vehicle Size
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ hero.detail.categories.vehicleSize }}
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ villain.detail.categories.vehicleSize }}
+                          </div>
+                        </div>
+                      </div><!-- .row -->
+                    {{/if }}
+                    {{#if categories.include_style }}
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-title">
+                            Vehicle Style
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ hero.detail.categories.vehicleStyle }}
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="b-compare__block-inside-value">
+                            {{ villain.detail.categories.vehicleStyle }}
+                          </div>
+                        </div>
+                      </div><!-- .row -->
+                    {{/if }}
+                  </div>
+                </div><!-- .b-compare__block -->
+              </div><!-- #stats -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- .container -->
+</section>
 
 <section id="legal">
   <div class="container">
