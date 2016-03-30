@@ -226,47 +226,38 @@ header .content-section {
 .main-banner .row--half {
   width: 50%;
   float: left;
-  background-size: 800px 400px!important;
 }
-@media screen and (max-width: 1100px) {
-  .main-banner .row--half {
-    background-size: 750px 375px!important;
-  }
-}
-@media screen and (max-width: 1000px) {
-  .main-banner .row--half {
-    background-size: 700px 350px!important;
-  }
-}
-@media screen and (max-width: 900px) {
-  .main-banner .row--half {
-    background-size: 650px 325px!important;
-  }
-}
-@media screen and (max-width: 800px) {
-  .main-banner .row--half {
-    background-size: 600px 300px!important;
-  }
-}
-@media screen and (max-width: 600px) {
-  .main-banner .row--half {
-    width: 100%;
-    background-size: 100%!important;
-  }
-}
+
+// @media screen and (max-width: 1100px) {
+//   .main-banner .row--half {
+//     background-size: 750px 375px!important;
+//   }
+// }
+// @media screen and (max-width: 1000px) {
+//   .main-banner .row--half {
+//     background-size: 700px 350px!important;
+//   }
+// }
+// @media screen and (max-width: 900px) {
+//   .main-banner .row--half {
+//     background-size: 650px 325px!important;
+//   }
+// }
+// @media screen and (max-width: 800px) {
+//   .main-banner .row--half {
+//     background-size: 600px 300px!important;
+//   }
+// }
+// @media screen and (max-width: 600px) {
+//   .main-banner .row--half {
+//     width: 100%;
+//     background-size: 100%!important;
+//   }
+// }
 .main-banner--image {
-  height: 400px;
+  height: 250px;
 }
-@media screen and (max-width: 1100px) {
-  .main-banner--image {
-    height: 375px;
-  }
-}
-@media screen and (max-width: 1000px) {
-  .main-banner--image {
-    height: 350px;
-  }
-}
+
 @media screen and (max-width: 900px) {
   .main-banner--image {
     height: 325px;
